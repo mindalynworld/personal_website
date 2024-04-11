@@ -7,15 +7,15 @@
         <div class="header" width="100%" height="300">
             <svg width="300" height="270">
                 <g>
-                    <circle class="technology"
+                    <circle class="logo-circle" id="technology"
                     cx="110" cy="180" r="60"
                     fill="rgba(255, 199, 100, 0.75)"
                     />
-                    <circle class="education"
+                    <circle class="logo-circle" id="education"
                     cx="190" cy="180" r="60"
                     fill="rgba(205, 232, 181, 0.75)"
                     />
-                    <circle class="arts"
+                    <circle class="logo-circle" id="arts"
                     cx="150" cy="130" r="60"
                     fill="rgba(195, 175, 252, 0.75)" 
                     />
@@ -28,9 +28,44 @@
         </div>
 
         <div class="wrapper">
-            <div id="svg-container" class="svg-container"></div>
+            <div id="viz-container" class="viz-container">
+                <p class="viz-title">Experience Timeline</p>
+
+                <div class="legend" id="timeline">
+                    <div class="legend-item" id="category">
+                        <p class="legend-title">Category</p>
+                        <svg width="175" height="70">
+                            <circle class="legend-symbol" cx="18" cy="8" r="7" fill="rgba(255, 199, 100, 0.75)"></circle>
+                                <text class="legend-text" x="30" y="13">Technology & Data</text>
+                            <circle class="legend-symbol" cx="18" cy="28" r="7" fill="rgba(205, 232, 181, 0.75)"></circle>
+                                <text class="legend-text" x="30" y="33">Education & Community Building</text>
+                            <circle class="legend-symbol" cx="18" cy="48" r="7" fill="rgba(195, 175, 252, 0.75)"></circle>
+                                <text class="legend-text" x="30" y="53">Arts & Storytelling</text>
+                        </svg>
+                    </div>
+                    <div class="legend-item" id="time-commitment">
+                        <h4 class="legend-title">Time Commitment</h4>
+                        <svg width="300" height="70">
+                            <rect class="legend-symbol time" y="4" x="25" rx="5" ry="5" width="40" height="24"></rect>
+                                <text class="legend-text" x="25" y="47">Full-time</text>
+                                <text class="legend-text sub" x="25" y="63">(30-40+ hr/wk)</text>
+                            <rect class="legend-symbol time" y="12" x="125" rx="5" ry="5" width="40" height="16"></rect>
+                                <text class="legend-text" x="125" y="47">Part-time</text>
+                                <text class="legend-text sub" x="125" y="63">(10-20 hr/wk)</text>
+                            <rect class="legend-symbol time" y="20" x="225" rx="5" ry="5" width="40" height="8"></rect>
+                                <text class="legend-text" x="225" y="47">Intermittent</text>   
+                                <text class="legend-text sub" x="225" y="63">(&lt;10 hr/wk)</text>
+                        </svg>
+                    </div>
+                    <!-- <div class="legend-item" id="description">
+                        
+                    </div> -->
+                </div>
+            </div>
             <div class="text-container">
-                <div class="text-block">Sample Text</div>
+                <div class="text-block">
+                    <h3>Section Title</h3>
+                </div>
             </div>
         </div>
 
@@ -64,11 +99,11 @@
 
         /* DEFINING TIMELINE SVG CANVAS */
         var wrapper = d3.select(".wrapper") // this doesn't even need to be d3
-            .attr("style", `background-image: ${gradient_normal}`);
+            //.attr("style", `background-image: ${gradient_normal}`);
 
-        var timelineContainer = d3.select("div#svg-container"); // container allows svg to be dynamically sized when window is adjusted
+        var timelineContainer = d3.select("div#viz-container"); // container allows svg to be dynamically sized when window is adjusted
             
-        var svgTimeline = timelineContainer.append("svg") 
+        var svgTimeline = timelineContainer.insert("svg", ".legend")
             .attr("preserveAspectRatio", "xMinYMin meet")
             .attr("viewBox", `0 0 ${w} ${h}`)
             .classed("svg-timeline", true)
@@ -93,7 +128,7 @@
 
         /* LOGO PULSING TRANSITIONS */
         var recolor = function() {
-            d3.selectAll("circle")
+            d3.selectAll(".logo-circle")
             .transition()
             .delay(function(d, i) {
                 return i*500;
@@ -105,7 +140,7 @@
             .on("end", function() {
                 var used = new Set();
 
-                d3.selectAll(".technology")
+                d3.selectAll("#technology")
                 .transition()
                 .duration(1000)
                 .attr("fill", () => colors_faded[generateRandomIndex(2, used)])
@@ -113,13 +148,13 @@
                 //     setTimeout(recolor, 4000)
                 // );
 
-                d3.selectAll(".education")
+                d3.selectAll("#education")
                 .transition()
                 .delay(500)
                 .duration(1000)
                 .attr("fill", () => colors_faded[generateRandomIndex(2, used)])
 
-                d3.selectAll(".arts")
+                d3.selectAll("#arts")
                 .transition()
                 .delay(1000)
                 .duration(1000)
@@ -218,7 +253,7 @@
             svgTimeline.selectAll('rect')
                 .data(data)
                 .enter()
-                .append("rect") 
+                .append("rect")
                 .attr('id', (d,i) => "item_"+i)
                 .attr("y", function(d, i) {
                     /* all random but in slots */
@@ -269,7 +304,7 @@
                     return `url(#${color})`;
                     
                 })
-                .attr('stroke', 'white')
+                .attr('stroke', 'grey')
                 .attr('rx', '5')
                 .attr('ry', '5')
 
@@ -327,14 +362,15 @@
                         d3.selectAll('rect').attr("opacity", 0.5);
                         d3.selectAll("#" + hoveredID)
                             .attr("opacity", 1)
-                            .attr('stroke-width', 4);
-                        wrapper.attr("style", `background-image: ${gradient_faded}`);
+                            .attr('stroke-width', 2)
+                        // wrapper.attr("style", `background-image: ${gradient_faded}`);
                     })
                     .on("mouseleave", function() {
                         d3.selectAll('rect')
                             .attr("opacity", 1)
-                            .attr('stroke-width', 1);
-                        wrapper.attr("style", `background-image: ${gradient_normal}`);  
+                            .attr('stroke-width', 1)
+                        // wrapper.attr("style", `background-image: ${gradient_normal}`);  
+
 
                         d3.selectAll(".tooltip").remove();
                     });
