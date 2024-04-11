@@ -1,0 +1,25 @@
+
+<script>
+
+// reading in data from csv
+d3.csv("personalExperienceData.csv", function(data) {
+    //data is each individual item
+});
+
+d3.csv("personalExperienceData.csv").then( function(data) {
+    // data is given as a whole array with all the items
+});
+
+/* transitions and looping and delays */
+var recolor = function() {
+    d3.selectAll("circle")
+    .transition()
+    .delay(function(d, i) {
+        return i*500;
+    })
+    .duration(1000)
+    .attr("fill", "blue") // or a dynamic way to determine next attribute
+    .on("end", recolor) }; // (can use setTimeout(func, 3000)) to delay it
+
+
+</script>

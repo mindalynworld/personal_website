@@ -1,0 +1,114 @@
+---
+title: "Personal Experience Data Processing"
+---
+
+```{r}
+library(readr)
+library(zoo)
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(viridis)
+library(hrbrthemes)
+```
+
+
+```{r}
+data <- read_csv("personalExperienceData.csv",
+      locale = locale(encoding = "latin1"),
+       na = c("NA", "n/a")) %>% 
+  rename("edu" = "education/community_building") %>% 
+  rename("tech" = "tech/STEM") %>% 
+  rename("arts" = "arts/storytelling") %>% 
+  filter(include == 1)
+  
+# as.Date requires a day so i added on bc yearmon sucks
+# data$start_date <- as.yearmon(data$start_date,format="%m/%Y")
+# data$end_date <- as.yearmon(data$end_date,format="%m/%Y")
+
+data$start_date <- as.Date(data$start_date,format="%m/%d/%Y")
+data$end_date <- as.Date(data$end_date,format="%m/%d/%Y")
+```
+
+```{r}
+# for each month between Sep 2015 - Mar 2024
+# get all rows where this month falls in between start and end (inclusive)
+# sum all the rows in cols edu, tech, arts and divide by total 
+
+#                     month      edu  tech  arts
+# result should be   Jun 2022   0.33  0.66   0
+```
+
+```{r}
+range_mo <- seq(as.Date("2015-09-01"), as.Date("2024-04-01"), "months") 
+# print(range_months)
+
+range_qu <- seq(as.Date("2015-09-01"), as.Date("2024-04-01"), "quarter") 
+print(range_qu)
+
+range_yr <- seq(as.Date("2015-01-01"), as.Date("2025-04-01"), "years") 
+print(range_yr)
+```
+
+```{r}
+# basically for each month, get all the rows whose time frame overlaps, and add up their column values, then divide by the total 
+
+count_rows <- function(date) {
+  # this only works for the month one
+  temp <- data %>% filter(date >= data$start_date & date <= data$end_date) 
+  # maybe i need all rows where either start or end date falls within curr and next date (for years). i could make 2 ranges that have an offset, and use both parameters
+  total <- sum(rowSums(temp %>% select(c('edu', 'tech', 'arts'))))
+  edu <- sum(temp$edu) / total
+  tech <- sum(temp$tech) / total
+  arts <- sum(temp$arts) / total
+  return (c(edu, tech, arts))
+}
+```
+
+
+```{r}
+percentages_mo <- sapply(range_mo, count_rows)
+
+percentages_qu <- sapply(range_qu, count_rows)
+percentages_qu
+
+percentages_yr <- sapply(range_yr, count_rows)
+percentages_yr
+```
+
+I might want to give weights in the spreadsheet, like levels of time commitment, or manually weighting if something was tech and education but way more education. 
+Could also add project pac.
+
+```{r}
+percentages <- percentages_qu
+range <- range_qu
+stackedAreaData <- data.frame(year=range,education=percentages[1,],tech=percentages[2,],arts=percentages[3,])
+
+# we need this in long format for stack area chart in R ggplot2
+
+data_long <- pivot_longer(stackedAreaData, cols = c(education, tech, arts), names_to = "category", values_to = "proportion")
+
+print(data_long)
+```
+
+
+
+```{r}
+# stacked area chart
+stackedAreaQu <- ggplot(data_long, aes(x=year, y=proportion, fill=category)) + 
+    geom_area(alpha=0.6 , size=.5, colour="white") +
+    scale_fill_viridis(discrete = T) +
+    theme_ipsum() + 
+    ggtitle("My experience over time")
+stackedAreaQu
+```
+
+```{r}
+ggsave("stackedAreaQuarters.png")
+```
+
+I could also make a distinction between SWE and data tech
+could add back in community
+
+Would love to animate it so that it draws left to right
+and prettify it so that it looks more flashy/modern

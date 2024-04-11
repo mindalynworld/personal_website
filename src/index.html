@@ -1,0 +1,394 @@
+<html>
+    <head>
+        <title>Mindy Ng</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="header" width="100%" height="300">
+            <svg width="300" height="270">
+                <g>
+                    <circle class="technology"
+                    cx="110" cy="180" r="60"
+                    fill="rgba(255, 199, 100, 0.75)"
+                    />
+                    <circle class="education"
+                    cx="190" cy="180" r="60"
+                    fill="rgba(205, 232, 181, 0.75)"
+                    />
+                    <circle class="arts"
+                    cx="150" cy="130" r="60"
+                    fill="rgba(195, 175, 252, 0.75)" 
+                    />
+                    <text x="75" y="170" 
+                    font-size="35" font-weight="500"
+                    fill="white">Mindy Ng</text>
+                </g>
+            </svg>
+            <p class="tagline">A freelance data visualization engineer, STEM educator, and professional dancer based in the Bay Area, California.</p>
+        </div>
+
+        <div class="wrapper">
+            <div id="svg-container" class="svg-container"></div>
+            <div class="text-container">
+                <div class="text-block">Sample Text</div>
+            </div>
+        </div>
+
+
+    <script type="module">
+        import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+        
+        let dates = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024];
+
+        /* COLOR DEFINITIONS (maybe this can exist in styles and just add attr class?) */
+        var arts_color = "rgb(195, 175, 252)"; 
+        var edu_color = "rgb(205, 232, 181)";
+        var tech_color = "rgb(255, 199, 100)";
+        var arts_color_faded = "rgba(195, 175, 252, 0.75)"; 
+        var edu_color_faded = "rgba(205, 232, 181, 0.75)";
+        var tech_color_faded = "rgba(255, 199, 100, 0.75)";
+        var colors_faded = [edu_color_faded, arts_color_faded, tech_color_faded];
+
+        var gradient_normal = `linear-gradient(to right bottom, ${arts_color},  ${edu_color}, ${tech_color})`;
+        var gradient_faded = `linear-gradient(to right bottom, ${arts_color_faded}, ${edu_color_faded}, ${tech_color_faded})`;
+        
+        /* GLOBAL ATTRIBUTES */
+        var padding = 50;
+        var rect_padding = 10;
+        var month_length = 10;
+        var item_length = 15;
+        var num_items = 24;
+        var num_months = 104;
+        var w = (num_months * month_length) + padding * 2 ;
+        var h = (num_items * (item_length * 2 + rect_padding)) + padding*2;
+
+        /* DEFINING TIMELINE SVG CANVAS */
+        var wrapper = d3.select(".wrapper") // this doesn't even need to be d3
+            .attr("style", `background-image: ${gradient_normal}`);
+
+        var timelineContainer = d3.select("div#svg-container"); // container allows svg to be dynamically sized when window is adjusted
+            
+        var svgTimeline = timelineContainer.append("svg") 
+            .attr("preserveAspectRatio", "xMinYMin meet")
+            .attr("viewBox", `0 0 ${w} ${h}`)
+            .classed("svg-timeline", true)
+            //.attr("style", "background-color: grey")
+            // .attr("style", `background-image: ${gradient_normal}`);   
+                
+        var defs = svgTimeline.append("defs");
+
+        /* FUNCTION DEFINITIONS */
+
+        function generateRandomIndex(max, used_set) {
+            var index = Math.round(Math.random() * max)
+            if (used_set.has(index)) {
+                if (used_set.size == num_items) {
+                    return 0; // no more indices
+                }
+                index = generateRandomIndex(max, used_set);
+            }
+            used_set.add(index)
+            return index;
+        }
+
+        /* LOGO PULSING TRANSITIONS */
+        var recolor = function() {
+            d3.selectAll("circle")
+            .transition()
+            .delay(function(d, i) {
+                return i*500;
+            })
+            .duration(1000)
+            .attr("fill", function(d, i) {
+                return colors_faded[i]
+            })
+            .on("end", function() {
+                var used = new Set();
+
+                d3.selectAll(".technology")
+                .transition()
+                .duration(1000)
+                .attr("fill", () => colors_faded[generateRandomIndex(2, used)])
+                // .on("end", ()=>
+                //     setTimeout(recolor, 4000)
+                // );
+
+                d3.selectAll(".education")
+                .transition()
+                .delay(500)
+                .duration(1000)
+                .attr("fill", () => colors_faded[generateRandomIndex(2, used)])
+
+                d3.selectAll(".arts")
+                .transition()
+                .delay(1000)
+                .duration(1000)
+                .attr("fill", () => colors_faded[generateRandomIndex(2, used)])
+            });
+        }
+
+        // gradient function is needed to color the svg shape elements
+        function createGradient(id, color1, perc1, color2, perc2, color3=null, perc3=null) {
+            var gradient = defs.append("linearGradient")
+                .attr("id", id)
+                .attr("y1", "0%")
+                .attr("y2", "100%")
+                .attr("x1", "0%")
+                .attr("x2", "0%")
+            
+            gradient.append("stop")
+                .attr('class', 'start')
+                .attr("offset", perc1)
+                .attr("stop-color", color1)
+                .attr("stop-opacity", 1);
+                
+            gradient.append("stop")
+                .attr('class', 'middle')
+                .attr("offset", perc2)
+                .attr("stop-color", color2)
+                .attr("stop-opacity", 1);   
+
+            if (color3 != null) {
+                gradient.append("stop")
+                .attr('class', 'end')
+                .attr("offset", perc3)
+                .attr("stop-color", color3)
+                .attr("stop-opacity", 1);
+            }
+        } 
+
+        function determineColors(d) { // update this to be more parameter based so it can cover more cases
+            var solid = false;
+
+            if (d.edu_weight == 1) {
+                solid = true;
+                return [solid, edu_color];
+            }
+            if (d.arts_weight == 1) {
+                solid = true;
+                return [solid, arts_color];
+            }
+            if (d.tech_weight == 1) {
+                solid = true;
+                return [solid, tech_color];
+            }
+            
+            let gradient;
+            if (d.edu_weight > 0) {
+                if (d.arts_weight > 0) {
+                    if (d.tech_weight > 0) {
+                        gradient = "allGradient";
+                        return [solid, gradient];
+                    }
+                    gradient = "eduArtsGradient";
+                }
+                else if (d.tech_weight > 0) {
+                    gradient = "eduTechGradient";
+                }
+            } else if (d.arts_weight > 0 && d.tech_weight > 0) {
+                gradient = "techArtsGradient";
+            }
+
+            return [solid, gradient];
+        }
+
+        /* CALL FUNCTIONS */
+
+        /* start logo animations */
+        recolor();
+        setInterval(recolor, 6000);
+
+        d3.select(".header").selectAll("circle").on('mouseover', recolor);
+
+
+        /* creating gradients for each combination of categories, used for rects and tool tips */
+        var eduArtsGradient = createGradient("eduArtsGradient", edu_color, "0%", arts_color, "100%");
+        var eduTechGradient = createGradient("eduTechGradient", tech_color, "0%", edu_color, "100%");
+        var techArtsGradient = createGradient("techArtsGradient", arts_color, "0%", tech_color, "100%");
+        var allGradient = createGradient("allGradient", arts_color, "0%", tech_color, "50%", edu_color, "100%");
+
+        /* Loading in the experience data and rendering the timeline with d3.js */
+        d3.csv("personalExperienceData.csv").then( function(data) {
+            console.log(data);
+            data.sort((a,b) => a.start_mo - b.start_mo)
+
+            // var usedIndices = new Set();
+            var currX = padding;
+
+            svgTimeline.selectAll('rect')
+                .data(data)
+                .enter()
+                .append("rect") 
+                .attr('id', (d,i) => "item_"+i)
+                .attr("y", function(d, i) {
+                    /* all random but in slots */
+                    // return generateRandomIndex(num_items, usedIndices) * (item_length + padding) + padding 
+
+                    /* in order */
+                    //return i*(item_length + padding) + padding 
+                    
+                    /* in order but with new width sizing */
+                    var temp = currX;
+                    currX = currX + (item_length*d.time_level) + rect_padding;
+                    return temp;
+
+                    /* all random (not perfectly slotted in intervals) */
+                    // var min = padding;
+                    // var max = w - padding;
+                    // return Math.random() * (max-min) + min;
+                    
+                    /* random within category, haven't figured out the blended ones yet */
+                    // if (d.tech_weight == 1) {
+                    //     var min = padding;
+                    //     var max = w / 3;
+                    //     return Math.random() * (max-min) + min;
+                    // }
+                    // if (d.edu_weight == 1) {
+                    //     var min = w / 3 + padding;
+                    //     var max = 2 * (w / 3);
+                    //     return Math.random() * (max-min) + min;
+                    // }
+                    // if (d.arts_weight == 1) {
+                    //     var min = 2 * (w / 3) + padding;
+                    //     var max = w - padding;
+                    //     return Math.random() * (max-min) + min;
+                    // }
+                }) 
+                    // update to depend on category 
+                    // i just don't really know what to do with the blended ones
+                .attr("x", (d,) => d.start_mo * month_length + padding)
+                .attr("height", (d) => d.time_level * item_length)
+                .attr("width", (d) => d.num_months * month_length)
+                .attr("fill", function(d) {
+                    var [solid, color] = determineColors(d);
+
+                    if (solid == true) {
+                        return color;
+                    } 
+                    
+                    return `url(#${color})`;
+                    
+                })
+                .attr('stroke', 'white')
+                .attr('rx', '5')
+                .attr('ry', '5')
+
+                // /* HANDLING MOUSE EVENTS */
+                var rects = svgTimeline.selectAll('rect')
+                    .on("mouseover", function(d) {
+                        data = d.toElement.__data__;
+
+                        /* add tooltip */
+                        // i should actually just make these rectangles in the svgTimeline instead of a div in the parent container
+                        timelineContainer.append("div")
+                            .attr("class", "tooltip")
+                            .attr("style", function() {
+                                var [solid, color] = determineColors(data);
+
+                                if (solid) {
+                                    return `background-color: ${color};`;
+                                } // move this logic up to my reusable function above
+                                if (color == "eduArtsGradient") {
+                                    return `background-image: linear-gradient(${edu_color}, ${arts_color});`;
+                                }
+                                if (color == "eduTechGradient") {
+                                    return `background-image: linear-gradient(${edu_color}, ${tech_color});`;
+                                }
+                                if (color == "techArtsGradient") {
+                                    return `background-image: linear-gradient(${tech_color}, ${arts_color});`;
+                                }
+                                if (color == "allGradient") {
+                                    return `background-image: ${gradient_normal};`
+                                }
+
+                            })
+                            .html(`
+                                <h4 style="margin:10;">${data.title}</h4>
+                                <h5 style="margin:10; font-style: bold;">
+                                    ${data.location} <br>
+                                    ${data.start_date} - ${data.end_date}
+                                </h5>
+                                <p style="margin:10; font-size: 14px">${data.description}</p>
+                            `)
+                            .attr("style", function() {
+                                
+                                var style = d3.select(this).attr("style");
+
+                                var parentHeight = svgTimeline._groups[0][0].clientHeight;
+                                var rectHeight = d3.select(this)._groups[0][0].clientHeight;
+                                if (data.start_mo > num_months / 2) {
+                                    return style + `top: ${parentHeight / 2}; left: ${0};`; // it maintains the original h instead of dynamic
+                                } //parentHeight - rectHeight - padding*2 if want it to come from bottom
+                                return style +`top: ${padding}; right: ${0};`;
+                            });
+
+                        /* highlight hovered rec and fade everything else */
+                        var hoveredID = d3.select(this).attr("id");
+                        d3.selectAll('rect').attr("opacity", 0.5);
+                        d3.selectAll("#" + hoveredID)
+                            .attr("opacity", 1)
+                            .attr('stroke-width', 4);
+                        wrapper.attr("style", `background-image: ${gradient_faded}`);
+                    })
+                    .on("mouseleave", function() {
+                        d3.selectAll('rect')
+                            .attr("opacity", 1)
+                            .attr('stroke-width', 1);
+                        wrapper.attr("style", `background-image: ${gradient_normal}`);  
+
+                        d3.selectAll(".tooltip").remove();
+                    });
+                    // for debugging
+                    // .on("mousedown", function(d) {
+                    //     data = d.toElement.__data__;
+
+                    //     timelineContainer.append("div")
+                    //         .attr("class", "metadata")
+                    //         .html(`
+                    //             <h4 style="margin:10;">${data.title}</h4>
+                    //             <h5 style="margin:10; font-style: bold;">
+                    //                 ${data.location} <br>
+                    //                 ${data.start_date} - ${data.end_date}
+                    //             </h5>
+                    //             <p style="margin:10; font-size: 14px">${data.description}</p>
+                    //         `);
+                    // });
+
+                const x = d3.scaleTime(
+                    [new Date(2015, 9, 1), new Date(2024, 3, 30)], // domain
+                    [padding, w - padding]); // range
+
+                var xAxisTop = d3.axisTop(x)
+                    //.ticks(d3.timeMonth.every(6)) // num months
+                    .tickSizeOuter(0)
+                    .tickSizeInner(10);
+                
+                var xAxisBottom = d3.axisBottom(x)
+                    //.ticks(d3.timeMonth.every(6)) // num months
+                    .tickSizeOuter(0)
+                    .tickSizeInner(10);
+
+                //timelineContainer
+                    //.append("svg")
+                    // .attr("class", "axis_container")
+                    // .attr("preserveAspectRatio", "xMinYMin meet")
+                    // .attr("viewBox", `0 0 ${w} 50`)
+                    // .style("position", "fixed") // sticky isn't working
+                    // .style("bottom", 0)
+                
+                svgTimeline.append("g") // new group element which will contain all of our axis elements
+                    .call(xAxisBottom)
+                    .attr("transform", `translate(0,${rect_padding})`)
+                    .attr("font-size", "20px")
+                    .attr("color", "rgba(151, 151, 151, 1)")
+
+                svgTimeline.append("g") // new group element which will contain all of our axis elements
+                    .call(xAxisTop)
+                    .attr("transform", `translate(0,${h-rect_padding*2})`) // put it at bottom of the canvas
+                    .attr("font-size", "20px")
+                    .attr("color", "rgba(151, 151, 151, 1)")
+        });
+
+        </script>
+    </body>
+</html>

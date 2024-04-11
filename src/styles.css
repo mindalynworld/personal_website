@@ -1,0 +1,94 @@
+body {
+    font-family: Avenir;
+    color: white;
+    overflow: visible;
+}
+
+.header {
+    background-color:rgb(108, 159, 255);
+    text-align: center;
+    /* margin-bottom: 10; */
+}
+
+.tagline {
+    padding: 25px;
+    margin: 0;
+}
+
+.wrapper {
+    display: flex;
+    margin: 10 0;
+    padding: 10px;
+    height: 95vh; /* can't be 100 if the header is there. */
+}
+
+.svg-container {
+    display: flex; /* inline-block */
+    position: relative;
+    height: 100%;
+    flex-basis: 70%;
+    align-items: center;
+    justify-content: center;
+    /* width: 70%;
+    vertical-align: top;
+    margin-right: 10px;
+    overflow: visible; */
+}
+
+.svg-timeline {
+    display: inline-block;
+    position: absolute;
+    max-height: -webkit-fill-available;
+    /* top: 0;
+    left: 0; */
+}
+
+.text-container {
+    display: flex;
+    position: relative;
+    height: 100%;
+    flex-basis: 30%;
+    margin-left: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-block {
+    /* display: inline-block;
+    position: absolute; */
+    text-align: center;
+    width: 100%;
+    height: 80%;
+    border-color: grey;
+    /* border-radius: 10px;  */
+    border-left: 1px solid;
+    border-color: rgb(180, 180, 180);
+    color: grey;
+}
+
+/* .axis_container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    margin-right: 10px;
+    overflow: visible;
+} */
+
+.tooltip {
+    position: absolute; 
+    /* top: 40px;
+    right:0;  */
+    width:  200px; 
+    padding: 10px; 
+    margin: 20px;
+    border-radius: 10px; 
+    text-align:center; 
+    color:white; 
+    border-style: solid;
+    border-color: white;
+    /* background-color: rgba(255, 215, 71, 0.8);  */
+}
+
+/* #timelineAxis {
+    font-size: 20px;
+} */
