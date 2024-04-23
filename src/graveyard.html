@@ -1,0 +1,67 @@
+
+
+/* all random (not perfectly slotted in intervals) */
+// var min = padding;
+// var max = w - padding;
+// return Math.random() * (max-min) + min;
+
+/* random within category, haven't figured out the blended ones yet */
+// if (d.tech_weight == 1) {
+//     var min = padding;
+//     var max = w / 3;
+//     return Math.random() * (max-min) + min;
+// }
+// if (d.edu_weight == 1) {
+//     var min = w / 3 + padding;
+//     var max = 2 * (w / 3);
+//     return Math.random() * (max-min) + min;
+// }
+// if (d.arts_weight == 1) {
+//     var min = 2 * (w / 3) + padding;
+//     var max = w - padding;
+//     return Math.random() * (max-min) + min;
+// }
+
+/* add tooltip */
+// i should actually just make these rectangles in the svgTimeline instead of a div in the parent container
+// timelineContainer.append("div")
+//     .attr("class", "tooltip")
+//     .attr("style", function() {
+//         var [solid, color] = determineColors(data);
+
+//         if (solid) {
+//             return `background-color: ${color};`;
+//         } // move this logic up to my reusable function above
+//         if (color == "eduArtsGradient") {
+//             return `background-image: linear-gradient(${edu_color}, ${arts_color});`;
+//         }
+//         if (color == "eduTechGradient") {
+//             return `background-image: linear-gradient(${edu_color}, ${tech_color});`;
+//         }
+//         if (color == "techArtsGradient") {
+//             return `background-image: linear-gradient(${tech_color}, ${arts_color});`;
+//         }
+//         if (color == "allGradient") {
+//             return `background-image: ${gradient_normal};`
+//         }
+
+//     })
+//     .html(`
+//         <h4 style="margin:10;">${data.title}</h4>
+//         <h5 style="margin:10; font-style: bold;">
+//             ${data.location} <br>
+//             ${data.start_date} - ${data.end_date}
+//         </h5>
+//         <p style="margin:10; font-size: 14px">${data.description}</p>
+//     `)
+//     .attr("style", function() { // have to add to the existing style to not overwrite
+        
+//         var style = d3.select(this).attr("style");
+
+//         var parentHeight = svgTimeline._groups[0][0].clientHeight;
+//         var rectHeight = d3.select(this)._groups[0][0].clientHeight;
+//         if (data.start_mo > num_months / 2) {
+//             return style + `top: ${parentHeight / 2}; left: ${0};`; // it maintains the original h instead of dynamic
+//         } //parentHeight - rectHeight - padding*2 if want it to come from bottom
+//         return style +`top: ${padding}; right: ${0};`;
+//     });

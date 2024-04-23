@@ -1,3 +1,7 @@
+html {
+    font-size: 62.5%;
+}
+
 body {
     font-family: Avenir;
     overflow: visible;
@@ -13,15 +17,16 @@ body {
 }
 
 .tagline {
-    padding: 25px;
+    padding: 2.5rem;
     margin: 0;
+    font-size: 1.4rem
 }
 
 .wrapper {
     display: flex;
     flex-direction: column;
-    margin: 10 0;
-    padding: 10px;
+    margin: 1rem 0;
+    padding: 1rem;
     height: 95vh; /* can't be 100 if the header is there. */
 }
 
@@ -40,7 +45,7 @@ body {
 }
 
 .viz-title {
-    font-size: 16px;
+    font-size: 1.6rem;
     font-weight: 500;
 }
 
@@ -48,16 +53,20 @@ body {
     display: block;
     position: relative;
     max-height: -webkit-fill-available;
-    /* top: 0;
-    left: 0; */
 }
+
+.svg-time-commitment, .svg-category {
+    max-width: 100%;
+}
+
 
 .text-container {
     display: flex;
     position: relative;
+    flex-direction: column;
     height: 100%;
     flex-basis: 30%;
-    margin-left: 10px;
+    margin-left: 1rem;
     justify-content: center;
     align-items: center;
 }
@@ -65,11 +74,14 @@ body {
 .text-block {
     /* display: inline-block;
     position: absolute; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
     text-align: center;
     width: 100%;
     height: 80%;
     border-color: grey;
-    border-top: 1px solid;
+    border-top: 0.1rem solid;
     border-color: rgb(180, 180, 180);
     color: grey;
 }
@@ -80,7 +92,7 @@ body {
     }
 
     .text-block {
-        border-left: 1px solid;
+        border-left: 0.1rem solid;
         border-top: none;
         border-color: rgb(180, 180, 180);
     }
@@ -97,10 +109,10 @@ body {
     position: absolute; 
     /* top: 40px;
     right:0;  */
-    width:  200px; 
-    padding: 10px; 
-    margin: 20px;
-    border-radius: 10px; 
+    width:  20rem; 
+    padding: 1rem; 
+    margin: 2rem;
+    border-radius: 1rem; 
     text-align:center; 
     color:white; 
     border-style: solid;
@@ -112,9 +124,17 @@ body {
     font-size: 20px;
 } */
 
+.experience-description {
+    margin: 2rem;
+}
+
+.item-group {
+    cursor: pointer;
+}
 
 .legend {
     display: flex;
+    max-width: -webkit-fill-available;
     justify-content: space-evenly;
     width: 90%;
     /* margin-bottom: 10px; */
@@ -122,14 +142,14 @@ body {
 }
 
 .legend-title {
-    margin: 10 0;
+    margin: 1rem 0;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 1.4rem;
 }
 
 .legend-symbol {
     stroke: grey;
-    stroke-width: 1px;
+    stroke-width: 0.1rem;
 }
 
 .legend-symbol.time {
@@ -138,9 +158,10 @@ body {
 
 .legend-text {
     fill: grey;
-    font-size: 13px;
+    font-size: 1.3rem;
 }
 
 .legend-text.sub {
-    font-size: 11px;
+    font-size: 1.1rem;
 }
+
