@@ -93,11 +93,11 @@
         var gradient_faded = `linear-gradient(to right bottom, ${arts_color_faded}, ${edu_color_faded}, ${tech_color_faded})`;
         
         /* GLOBAL ATTRIBUTES */
-        var padding = 50;
-        var rect_padding = 10;
+        var padding = 70;
+        var rect_padding = 15;
         var month_length = 10;
         var item_length = 15;
-        var num_items = 24;
+        var num_items = 22;
         var num_months = 112; //104 is original. adding more for scaling to allow for title overflow (up to dec 2024)
         var w = (num_months * month_length) + padding * 2; // + 200 is to allow for title overflow
         var h = (num_items * (item_length * 2 + rect_padding)) + padding*2;
@@ -300,6 +300,7 @@
         /* Loading in the experience data and rendering the timeline with d3.js */
         d3.csv("personalExperienceData.csv").then( function(data) {
             console.log(data);
+            data = data.filter((item) => (item.include == 1));
             data.sort((a,b) => a.start_mo - b.start_mo)
 
             // var usedIndices = new Set();
@@ -399,15 +400,13 @@
                         return "end";
                     }
                 })
-                .attr('font-size', "16px")
+                .attr('font-size', "18px")
                 .attr('fill', 'grey')
                 .text((d) => d.title);
 
             // what if i created the whole group relative to itself and then set the x/y of the whole group???
                 // have to use transform for <g> 
 
-
-                
                 // var currY = padding;
                 // svgTimeline.selectAll('line')
                 // .data(data)
@@ -439,7 +438,6 @@
                             highlightTimelineItem(currTimelineSelection);
                             return;
                         }
-                        console.log(data);
                         //currTimelineSelection = this
                         //data = d.toElement.__data__;
                         showTimelineItemDescription(this, data);
