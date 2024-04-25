@@ -240,7 +240,7 @@
                 .attr("opacity", 1)
                 //.attr('stroke-width', 1)
         
-            d3.selectAll(".experience-description").remove();
+            d3.selectAll(".item-description").remove();
 
             keepSelection = false
             currTimelineSelection = null;
@@ -249,7 +249,7 @@
         function showTimelineItemDescription(element, data) {
             /* add text to description to text container */
             d3.select('.text-block').append("div")
-                .attr("class", "experience-description")            
+                .attr("class", "item-description")            
                 .html(`
                     <p style="font-weight: 600; font-size: 1.6rem">${data.title}</p>
                     <p style="font-weight: 500; font-size: 1.4rem">
@@ -430,7 +430,7 @@
                     clearTimelineSelection();
                 });
 
-                var rects = svgTimeline.selectAll('.item-group')
+                var item_groups = svgTimeline.selectAll('.item-group')
                     .on("mouseover", function(event, data) {
                         fadeAll();
                         highlightTimelineItem(this);
@@ -438,15 +438,11 @@
                             highlightTimelineItem(currTimelineSelection);
                             return;
                         }
-                        //currTimelineSelection = this
-                        //data = d.toElement.__data__;
                         showTimelineItemDescription(this, data);
                     })
                     .on("click", function(event, data) {
-                        console.log("rect click"); 
-                        //clearTimelineSelection();
                         fadeAll();
-                        d3.selectAll(".experience-description").remove();
+                        d3.selectAll(".item-description").remove();
                         currTimelineSelection = this;
                         highlightTimelineItem(currTimelineSelection);
                         showTimelineItemDescription(currTimelineSelection, data);
@@ -462,10 +458,10 @@
                             fadeAll();
                             highlightTimelineItem(currTimelineSelection);
                         }
-
-
-                        //d3.selectAll(".tooltip").remove();
                     });
+
+                svgTimeline.selectAll(".item-description") // not working
+                    .on('click', (event) =>console.log('clicky'))
 
                 const x = d3.scaleTime(
                     [new Date(2015, 9, 1), new Date(2024, 12, 31)], // domain
