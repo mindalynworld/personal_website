@@ -17,9 +17,9 @@ library(hrbrthemes)
 data <- read_csv("personalExperienceData.csv",
       locale = locale(encoding = "latin1"),
        na = c("NA", "n/a")) %>% 
-  rename("edu" = "education/community_building") %>% 
-  rename("tech" = "tech/STEM") %>% 
-  rename("arts" = "arts/storytelling") %>% 
+  # rename("edu" = "education/community_building") %>% 
+  # rename("tech" = "tech/STEM") %>% 
+  # rename("arts" = "arts/storytelling") %>% 
   filter(include == 1)
   
 # as.Date requires a day so i added on bc yearmon sucks
@@ -94,11 +94,25 @@ print(data_long)
 
 
 ```{r}
+palette <- c("#C3AFFC", "#CDE8B5", "#FFC864")
+scales::show_col(palette)
+```
+
+
+```{r}
 # stacked area chart
 stackedAreaQu <- ggplot(data_long, aes(x=year, y=proportion, fill=category)) + 
     geom_area(alpha=0.6 , size=.5, colour="white") +
-    scale_fill_viridis(discrete = T) +
-    theme_ipsum() + 
+    #scale_color(palette="main") +
+    scale_fill_manual(values = unname(palette)) +
+    #scale_fill_viridis(discrete = T) +
+    theme(text = element_text(size=12,  family="Avenir"), 
+          panel.grid=element_blank(), 
+          panel.background=element_rect(fill="transparent", linewidth = 0.2, color="black"),
+          plot.background = element_rect(fill='transparent', color=NA),
+          legend.background = element_rect(fill='transparent'), #transparent legend bg
+          legend.box.background = element_rect(fill='transparent', linewidth = 0) #transparent legend panel
+          ) + 
     ggtitle("My experience over time")
 stackedAreaQu
 ```

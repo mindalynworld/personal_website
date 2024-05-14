@@ -10,7 +10,7 @@
                 <g>
                     <circle class="logo-circle" id="technology"
                     cx="110" cy="180" r="60"
-                    fill="rgba(255, 199, 100, 0.75)"
+                    fill="rgba(255, 200, 100, 0.75)"
                     />
                     <circle class="logo-circle" id="education"
                     cx="190" cy="180" r="60"
@@ -41,7 +41,7 @@
                         <p class="legend-title">Category</p>
                         <svg class="svg-category" width="175" height="70" preserveAspectRatio="xMinYMin meet" viewbox="0 0 175 70">
                             <!-- eventually make title svg so it can size dynamically -->
-                            <circle class="legend-symbol" cx="18" cy="8" r="7" fill="rgba(255, 199, 100, 0.75)"></circle>
+                            <circle class="legend-symbol" cx="18" cy="8" r="7" fill="rgba(255, 200, 100, 0.75)"></circle>
                                 <text class="legend-text" x="30" y="13">Technology & Data</text>
                             <circle class="legend-symbol" cx="18" cy="28" r="7" fill="rgba(205, 232, 181, 0.75)"></circle>
                                 <text class="legend-text" x="30" y="33">Education & Community Building</text>
@@ -83,10 +83,10 @@
         /* COLOR DEFINITIONS (maybe this can exist in styles and just add attr class?) */
         var arts_color = "rgb(195, 175, 252)"; 
         var edu_color = "rgb(205, 232, 181)";
-        var tech_color = "rgb(255, 199, 100)";
+        var tech_color = "rgb(255, 200, 100)";
         var arts_color_faded = "rgba(195, 175, 252, 0.75)"; 
         var edu_color_faded = "rgba(205, 232, 181, 0.75)";
-        var tech_color_faded = "rgba(255, 199, 100, 0.75)";
+        var tech_color_faded = "rgba(255, 200, 100, 0.75)";
         var colors_faded = [edu_color_faded, arts_color_faded, tech_color_faded];
 
         var gradient_normal = `linear-gradient(to right bottom, ${arts_color},  ${edu_color}, ${tech_color})`;
@@ -298,7 +298,7 @@
         var allGradient = createGradient("allGradient", arts_color, "0%", tech_color, "50%", edu_color, "100%");
 
         /* Loading in the experience data and rendering the timeline with d3.js */
-        d3.csv("personalExperienceData.csv").then( function(data) {
+        d3.csv("../data/personalExperienceData.csv").then( function(data) {
             console.log(data);
             data = data.filter((item) => (item.include == 1));
             data.sort((a,b) => a.start_mo - b.start_mo)
