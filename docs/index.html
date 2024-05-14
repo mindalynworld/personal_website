@@ -29,44 +29,72 @@
         </div>
 
         <div class="wrapper">
-            <div id="viz-container" class="viz-container">
-                <p class="viz-title">Experience Timeline</p>
-                <!-- <div class="legend-item" id="description">
-                    
-                </div> -->
+            <div class="viz-container">
+                <div class="viz" id="exp-timeline">
+                    <p class="viz-title">Experience Timeline</p>
+                    <!-- <div class="legend-item" id="description">
+                        
+                    </div> -->
 
-                <!-- <div class="legend-item" id="description"> </div> -->
-                <div class="legend" id="timeline">
-                    <div class="legend-item" id="category">
-                        <p class="legend-title">Category</p>
-                        <svg class="svg-category" width="175" height="70" preserveAspectRatio="xMinYMin meet" viewbox="0 0 175 70">
-                            <!-- eventually make title svg so it can size dynamically -->
-                            <circle class="legend-symbol" cx="18" cy="8" r="7" fill="rgba(255, 200, 100, 0.75)"></circle>
-                                <text class="legend-text" x="30" y="13">Technology & Data</text>
-                            <circle class="legend-symbol" cx="18" cy="28" r="7" fill="rgba(205, 232, 181, 0.75)"></circle>
-                                <text class="legend-text" x="30" y="33">Education & Community Building</text>
-                            <circle class="legend-symbol" cx="18" cy="48" r="7" fill="rgba(195, 175, 252, 0.75)"></circle>
-                                <text class="legend-text" x="30" y="53">Arts & Storytelling</text>
-                        </svg>
-                    </div>
-                    <div class="legend-item" id="time-commitment">
-                        <h4 class="legend-title">Time Commitment</h4>
-                        <svg class="svg-time-commitment" width="300" height="70" preserveAspectRatio="xMinYMin meet" viewbox="0 0 300 70">
-                            <!-- eventually make title svg so it can size dynamically -->
-                            <rect class="legend-symbol time" y="4" x="25" rx="5" ry="5" width="40" height="24"></rect>
-                                <text class="legend-text" x="25" y="47">Full-time</text>
-                                <text class="legend-text sub" x="25" y="63">(30-40+ hr/wk)</text>
-                            <rect class="legend-symbol time" y="12" x="125" rx="5" ry="5" width="40" height="16"></rect>
-                                <text class="legend-text" x="125" y="47">Part-time</text>
-                                <text class="legend-text sub" x="125" y="63">(10-20 hr/wk)</text>
-                            <rect class="legend-symbol time" y="20" x="225" rx="5" ry="5" width="40" height="8"></rect>
-                                <text class="legend-text" x="225" y="47">Intermittent</text>   
-                                <text class="legend-text sub" x="225" y="63">(&lt;10 hr/wk)</text>
-                        </svg>
+                    <!-- <div class="legend-item" id="description"> </div> -->
+                    <div class="legend" id="timeline">
+                        <div class="legend-item" id="category">
+                            <p class="legend-title">Category</p>
+                            <svg class="svg-category" width="175" height="70" preserveAspectRatio="xMinYMin meet" viewbox="0 0 175 70">
+                                <!-- eventually make title svg so it can size dynamically -->
+                                <circle class="legend-symbol" cx="18" cy="8" r="7" fill="rgba(255, 200, 100, 0.75)"></circle>
+                                    <text class="legend-text" x="30" y="13">Technology & Data</text>
+                                <circle class="legend-symbol" cx="18" cy="28" r="7" fill="rgba(205, 232, 181, 0.75)"></circle>
+                                    <text class="legend-text" x="30" y="33">Education & Community Building</text>
+                                <circle class="legend-symbol" cx="18" cy="48" r="7" fill="rgba(195, 175, 252, 0.75)"></circle>
+                                    <text class="legend-text" x="30" y="53">Arts & Storytelling</text>
+                            </svg>
+                        </div>
+                        <div class="legend-item" id="time-commitment">
+                            <h4 class="legend-title">Time Commitment</h4>
+                            <svg class="svg-time-commitment" width="300" height="70" preserveAspectRatio="xMinYMin meet" viewbox="0 0 300 70">
+                                <!-- eventually make title svg so it can size dynamically -->
+                                <rect class="legend-symbol time" y="4" x="25" rx="5" ry="5" width="40" height="24"></rect>
+                                    <text class="legend-text" x="25" y="47">Full-time</text>
+                                    <text class="legend-text sub" x="25" y="63">(30-40+ hr/wk)</text>
+                                <rect class="legend-symbol time" y="12" x="125" rx="5" ry="5" width="40" height="16"></rect>
+                                    <text class="legend-text" x="125" y="47">Part-time</text>
+                                    <text class="legend-text sub" x="125" y="63">(10-20 hr/wk)</text>
+                                <rect class="legend-symbol time" y="20" x="225" rx="5" ry="5" width="40" height="8"></rect>
+                                    <text class="legend-text" x="225" y="47">Intermittent</text>   
+                                    <text class="legend-text sub" x="225" y="63">(&lt;10 hr/wk)</text>
+                            </svg>
+                        </div>
                     </div>
                 </div>
-                    
+
+                <div class="viz" id="exp-stacked-area">
+                    <p class="viz-title">Evolution of My Experience Over Time</p>
+                    <img src="../data/stackedAreaQuarters.png" width="90%"> 
+                    <div class="legend" id="stacked-area-chart">
+                        <div class="legend-item" id="description">
+                            <p class="legend-title">Description</p>
+                            <p class="legend-text description">This stacked area chart shows how the proportion of time I spent on the three categories: Arts, 
+                                Technology, and Education through my professional and extracurricular experiences
+                                evolved over time (September 2015 to May 2024). This graphic was made using the ggplot2 R library.</p>
+                        </div>
+                        <div class="legend-item" id="category">
+                            <p class="legend-title">Category</p>
+                            <svg class="svg-category" width="175" height="70" preserveAspectRatio="xMinYMin meet" viewbox="0 0 175 70">
+                                <!-- eventually make title svg so it can size dynamically -->
+                                <circle class="legend-symbol" cx="18" cy="8" r="7" fill="rgba(255, 200, 100, 0.75)"></circle>
+                                    <text class="legend-text" x="30" y="13">Technology & Data</text>
+                                <circle class="legend-symbol" cx="18" cy="28" r="7" fill="rgba(205, 232, 181, 0.75)"></circle>
+                                    <text class="legend-text" x="30" y="33">Education & Community Building</text>
+                                <circle class="legend-symbol" cx="18" cy="48" r="7" fill="rgba(195, 175, 252, 0.75)"></circle>
+                                    <text class="legend-text" x="30" y="53">Arts & Storytelling</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+
             <div class="text-container">
                 <div class="text-block">
                     <!-- <h3>Section Title</h3> -->
@@ -106,7 +134,7 @@
         var wrapper = d3.select(".wrapper") // this doesn't even need to be d3
             //.attr("style", `background-image: ${gradient_normal}`);
 
-        var timelineContainer = d3.select("div#viz-container"); // container allows svg to be dynamically sized when window is adjusted
+        var timelineContainer = d3.select("div#exp-timeline"); // container allows svg to be dynamically sized when window is adjusted
             
         var svgTimeline = timelineContainer.insert("svg", ".legend") // inserts timeline before the legend
             .attr("preserveAspectRatio", "xMinYMin meet")

@@ -102,18 +102,25 @@ scales::show_col(palette)
 ```{r}
 # stacked area chart
 stackedAreaQu <- ggplot(data_long, aes(x=year, y=proportion, fill=category)) + 
-    geom_area(alpha=0.6 , size=.5, colour="white") +
+    geom_area(alpha=0.6 , size=.5, colour="white", show.legend = FALSE) +
+    scale_x_date(expand = c(0, 0)) +
+    scale_y_continuous(limits = c(0,1), expand = c(0, 0)) +
     #scale_color(palette="main") +
     scale_fill_manual(values = unname(palette)) +
     #scale_fill_viridis(discrete = T) +
     theme(text = element_text(size=12,  family="Avenir"), 
+          plot.margin=unit(c(0,18,0,0), "mm"),
+          aspect.ratio=0.7,
           panel.grid=element_blank(), 
-          panel.background=element_rect(fill="transparent", linewidth = 0.2, color="black"),
+          panel.background=element_rect(fill="white"),
           plot.background = element_rect(fill='transparent', color=NA),
           legend.background = element_rect(fill='transparent'), #transparent legend bg
-          legend.box.background = element_rect(fill='transparent', linewidth = 0) #transparent legend panel
-          ) + 
-    ggtitle("My experience over time")
+          legend.box.background = element_rect(fill='transparent', linewidth = 0), #transparent legend panel
+          axis.title.y = element_text(margin=margin(r = 15), color="#808080"),
+          axis.title.x = element_text(margin=margin(t = 10), color="#808080"),
+          axis.text = element_text(color="#808080"),
+          ) 
+    # ggtitle("My experience over time")
 stackedAreaQu
 ```
 
