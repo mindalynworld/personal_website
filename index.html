@@ -70,7 +70,7 @@
 
                 <div class="viz" id="exp-stacked-area">
                     <p class="viz-title">Evolution of My Experience Over Time</p>
-                    <img src="../data/stackedAreaQuarters.png" width="90%"> 
+                    <img src="data/stackedAreaQuarters.png" width="90%"> 
                     <div class="legend" id="stacked-area-chart">
                         <div class="legend-item" id="description">
                             <p class="legend-title">Description</p>
@@ -326,7 +326,7 @@
         var allGradient = createGradient("allGradient", arts_color, "0%", tech_color, "50%", edu_color, "100%");
 
         /* Loading in the experience data and rendering the timeline with d3.js */
-        d3.csv("../data/personalExperienceData.csv").then( function(data) {
+        d3.csv("data/personalExperienceData.csv").then( function(data) {
             console.log(data);
             data = data.filter((item) => (item.include == 1));
             data.sort((a,b) => a.start_mo - b.start_mo)
