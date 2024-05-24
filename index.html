@@ -109,6 +109,7 @@
         let dates = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024];
 
         /* COLOR DEFINITIONS (maybe this can exist in styles and just add attr class?) */
+        var main_color = "#454545";
         var arts_color = "rgb(195, 175, 252)"; 
         var edu_color = "rgb(205, 232, 181)";
         var tech_color = "rgb(255, 200, 100)";
@@ -140,7 +141,7 @@
             .attr("preserveAspectRatio", "xMinYMin meet")
             .attr("viewBox", `0 0 ${w} ${h}`)
             .classed("svg-timeline", true)
-            //.attr("style", "background-color: grey")
+            //.attr("style", "background-color: #454545")
             // .attr("style", `background-image: ${gradient_normal}`);   
                 
         var defs = svgTimeline.append("defs");
@@ -365,7 +366,7 @@
                 .attr("x", (d) => d.start_mo * month_length + padding)
                 .attr("height", (d) => d.time_level * item_length)
                 .attr("width", (d) => d.num_months * month_length)
-                .attr('stroke', 'grey')
+                .attr('stroke', main_color)
                 .attr('rx', '5')
                 .attr('ry', '5')
                 .attr("fill", function(d) {
@@ -407,7 +408,7 @@
                     currY3 = currY3 + (item_length*d.time_level) + rect_padding; 
                     return temp + (d.time_level * item_length) /2;
                 })
-                .attr('stroke', 'grey');
+                .attr('stroke', main_color);
 
             /* titles on the timeline */
             itemGroup.append('text')
@@ -429,7 +430,7 @@
                     }
                 })
                 .attr('font-size', "18px")
-                .attr('fill', 'grey')
+                .attr('fill', main_color)
                 .text((d) => d.title);
 
             // what if i created the whole group relative to itself and then set the x/y of the whole group???
@@ -448,7 +449,7 @@
                 //     })
                 //     .attr('x2', (d) => (d.start_mo * month_length + padding) + (d.num_months * month_length) + 20)
                 //     .attr('y2', (d) => )
-                //     .attr('stroke', 'grey');
+                //     .attr('stroke', main_color);
 
  
                 // /* HANDLING MOUSE EVENTS */
@@ -517,13 +518,13 @@
                     .call(xAxisBottom)
                     .attr("transform", `translate(0,${rect_padding})`)
                     .attr("font-size", "20px")
-                    .attr("color", "rgba(151, 151, 151, 1)")
+                    .attr("color", main_color)
 
                 svgTimeline.append("g") // new group element which will contain all of our axis elements
                     .call(xAxisTop)
                     .attr("transform", `translate(0,${h-rect_padding*2})`) // put it at bottom of the canvas
                     .attr("font-size", "20px")
-                    .attr("color", "rgba(151, 151, 151, 1)")
+                    .attr("color", main_color)
         });
 
         </script>

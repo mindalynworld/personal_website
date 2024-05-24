@@ -1,18 +1,25 @@
 html {
     font-size: 62.5%;
+
+    --main-text-color: #454545;
+    --main-border-color: #454545;
+    --main-background-color: cornsilk;
+
+    --header-background-color: rgb(108, 159, 255);
+    --contrast-text-color: white;
 }
 
 body {
     font-family: Avenir;
     overflow: visible;
-    background: cornsilk;
-    color: grey;
+    background: var(--main-background-color);
+    color: var(--main-text-color);
 }
 
 .header {
-    background-color:rgb(108, 159, 255);
+    background-color: var(--header-background-color);
     text-align: center;
-    color: white;
+    color: var(--contrast-text-color);
     /* margin-bottom: 10; */
 }
 
@@ -44,7 +51,7 @@ body {
     display: flex; /* inline-block  */
     position: relative;
     flex-direction: column;
-    height: 100%;
+    /* height: 100%; this was causing weirdness for narrow wide view */ 
     /* flex-basis: 70%; */
     align-items: center;
     justify-content: center;
@@ -93,10 +100,9 @@ body {
     text-align: center;
     width: 100%;
     height: 80%;
-    border-color: grey;
     border-top: 0.1rem solid;
-    border-color: rgb(180, 180, 180);
-    color: grey;
+    border-color: var(--main-border-color);
+    color: var(--main-text-color);
 }
 
 @media (min-width: 800px){
@@ -107,7 +113,7 @@ body {
     .text-block {
         border-left: 0.1rem solid;
         border-top: none;
-        border-color: rgb(180, 180, 180);
+        border-color: var(--main-border-color);
     }
 }
 /* .axis_container {
@@ -127,7 +133,7 @@ body {
     margin: 2rem;
     border-radius: 1rem; 
     text-align:center; 
-    color:white; 
+    color:var(--contrast-text-color);
     border-style: solid;
     border-color: white;
     /* background-color: rgba(255, 215, 71, 0.8);  */
@@ -151,7 +157,7 @@ body {
     justify-content: space-evenly;
     width: 90%;
     /* margin-bottom: 10px; */
-    color: grey;
+    color: var(--main-text-color);;
 }
 
 .legend-title {
@@ -161,7 +167,7 @@ body {
 }
 
 .legend-symbol {
-    stroke: grey;
+    stroke:  var(--main-border-color);
     stroke-width: 0.1rem;
 }
 
@@ -170,7 +176,7 @@ body {
 }
 
 .legend-text {
-    fill: grey;
+    fill: var(--main-text-color);;
     font-size: 1.3rem;
 }
 
