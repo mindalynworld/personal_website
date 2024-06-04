@@ -5,27 +5,68 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
     </head>
     <body>
-        <div class="header" width="100%" height="300">
-            <svg width="300" height="270">
-                <g>
-                    <circle class="logo-circle" id="technology"
-                    cx="110" cy="180" r="60"
-                    fill="rgba(255, 200, 100, 0.75)"
-                    />
-                    <circle class="logo-circle" id="education"
-                    cx="190" cy="180" r="60"
-                    fill="rgba(205, 232, 181, 0.75)"
-                    />
-                    <circle class="logo-circle" id="arts"
-                    cx="150" cy="130" r="60"
-                    fill="rgba(195, 175, 252, 0.75)" 
-                    />
-                    <text x="75" y="170" 
-                    font-size="35" font-weight="500"
-                    fill="white">Mindy Ng</text>
-                </g>
-            </svg>
-            <p class="tagline">A freelance data visualization engineer, STEAM educator, and professional dancer based in the Bay Area, California.</p>
+        <div class="header">
+            <div class="logo">
+            <svg width="300" height="200">
+                    <g>
+                        <circle class="logo-circle" id="technology"
+                        cx="110" cy="130" r="60"
+                        fill="rgba(252, 191, 78, 0.75)"
+                        />
+                        <circle class="logo-circle" id="education"
+                        cx="190" cy="130" r="60"
+                        fill="rgba(205, 232, 181, 0.75)"
+                        />
+                        <circle class="logo-circle" id="arts"
+                        cx="150" cy="80" r="60"
+                        fill="rgba(195, 175, 252, 0.75)" 
+                        />
+                        <text x="75" y="120" 
+                        font-size="35" font-weight="500"
+                        fill="white">Mindy Ng</text>
+                    </g>
+                </svg>
+            </div>
+            <p class="contact-info">mindylynnng@gmail.com  //  +1 510 374 9871  //  <a style="color: white;" href="www.linkedin.com/in/mindylynnng">LinkedIn</a></p>
+            
+            <div class="introduction">
+                <p>
+                    Hello! My name is Mindy Ng and I am a data science and visualization engineer, a STEAM educator and curriculum developer, and a professional dancer based in the Bay Area, California. 
+                </p>
+    
+                <p>   
+                    Over the years I have had a wide variety of professional, academic, and extracurricular experiences in various sectors and roles, and recently noticed that they have all fallen into 3 core themes: 
+                    (1) <u class="intro-themes" style="text-decoration-color: rgb(252, 191, 78);">Data and Technology</u>, 
+                    (2) <u class="intro-themes" style="text-decoration-color: rgb(205, 232, 181);">Education and Community Building</u> 
+                    and (3) <u class="intro-themes" style="text-decoration-color: rgb(195, 175, 252);">Arts and Storytelling</u>. 
+                    These themes have become pillars, anchoring and guiding me through my career path thus far.
+                </p>
+                <p>
+                    I was curious about how my involvement in each of these themes has fluctuated over time. 
+                    Have I maintained a balance or have certain ones taken up more of my time at different periods of my life? 
+                    I decided to visualize it with data.
+                </p>
+            </div>
+
+            <div>
+                <a href="#exp-timeline" class="start-btn"> Explore the data </a>
+            </div>
+
+            <!-- <p class="tagline">A data visualization engineer, STEAM educator, and professional dancer based in the Bay Area, California.</p> -->
+        </div>
+
+
+
+        <div class="viz-description" id="viz-description-1">
+            <p>This first visual is an interactive chart that shows an overview of my experiences from September 2015 (when I began my undergraduate studies at Brown University), to the present. 
+                Hover over or click on the items to reveal more information about each experience. 
+            </p>
+            <p>
+                At a glance, the presence of each color seems relatively balanced, however I noticed more purple (arts) experiences in my earlier and more recent years of my career. The middle years tend to have more orange (tech) and green (education). To check if this observation was correct, I used a stacked area chart.
+            </p>
+            <p>  
+                Read more about the data and process here.
+            </p>
         </div>
 
         <div class="wrapper">
@@ -42,7 +83,7 @@
                             <p class="legend-title">Category</p>
                             <svg class="svg-category" width="175" height="70" preserveAspectRatio="xMinYMin meet" viewbox="0 0 175 70">
                                 <!-- eventually make title svg so it can size dynamically -->
-                                <circle class="legend-symbol" cx="18" cy="8" r="7" fill="rgba(255, 200, 100, 0.75)"></circle>
+                                <circle class="legend-symbol" cx="18" cy="8" r="7" fill="rgba(252, 191, 78, 0.75)"></circle>
                                     <text class="legend-text" x="30" y="13">Technology & Data</text>
                                 <circle class="legend-symbol" cx="18" cy="28" r="7" fill="rgba(205, 232, 181, 0.75)"></circle>
                                     <text class="legend-text" x="30" y="33">Education & Community Building</text>
@@ -70,7 +111,7 @@
 
                 <div class="viz" id="exp-stacked-area">
                     <p class="viz-title">Evolution of My Experience Over Time</p>
-                    <img src="data/stackedAreaQuarters.png" width="90%"> 
+                    <img src="data/stackedAreaQuartersWeightedExt.png" width="90%"> 
                     <div class="legend" id="stacked-area-chart">
                         <div class="legend-item" id="description">
                             <p class="legend-title">Description</p>
@@ -82,7 +123,7 @@
                             <p class="legend-title">Category</p>
                             <svg class="svg-category" width="175" height="70" preserveAspectRatio="xMinYMin meet" viewbox="0 0 175 70">
                                 <!-- eventually make title svg so it can size dynamically -->
-                                <circle class="legend-symbol" cx="18" cy="8" r="7" fill="rgba(255, 200, 100, 0.75)"></circle>
+                                <circle class="legend-symbol" cx="18" cy="8" r="7" fill="rgba(252, 191, 78, 0.75)"></circle>
                                     <text class="legend-text" x="30" y="13">Technology & Data</text>
                                 <circle class="legend-symbol" cx="18" cy="28" r="7" fill="rgba(205, 232, 181, 0.75)"></circle>
                                     <text class="legend-text" x="30" y="33">Education & Community Building</text>
@@ -112,10 +153,10 @@
         var main_color = "#454545";
         var arts_color = "rgb(195, 175, 252)"; 
         var edu_color = "rgb(205, 232, 181)";
-        var tech_color = "rgb(255, 200, 100)";
+        var tech_color = "rgb(252, 191, 78)"; // 255, 200, 100
         var arts_color_faded = "rgba(195, 175, 252, 0.75)"; 
         var edu_color_faded = "rgba(205, 232, 181, 0.75)";
-        var tech_color_faded = "rgba(255, 200, 100, 0.75)";
+        var tech_color_faded = "rgba(252, 191, 78, 0.75)";
         var colors_faded = [edu_color_faded, arts_color_faded, tech_color_faded];
 
         var gradient_normal = `linear-gradient(to right bottom, ${arts_color},  ${edu_color}, ${tech_color})`;
@@ -429,7 +470,7 @@
                         return "end";
                     }
                 })
-                .attr('font-size', "18px")
+                .attr('font-size', "2rem")
                 .attr('fill', main_color)
                 .text((d) => d.title);
 
@@ -489,8 +530,11 @@
                         }
                     });
 
-                svgTimeline.selectAll(".item-description") // not working
-                    .on('click', (event) =>console.log('clicky'))
+                // prevents disappearing text when attempting to highlight text or click links.
+                d3.select('.text-container')
+                    .on('click', (event) => {
+                        event.stopPropagation();
+                    })
 
                 const x = d3.scaleTime(
                     [new Date(2015, 9, 1), new Date(2024, 12, 31)], // domain

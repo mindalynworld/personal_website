@@ -26,6 +26,13 @@ data <- read_csv("personalExperienceData.csv",
 data$start_date <- as.Date(data$start_date,format="%m/%d/%Y")
 data$end_date <- as.Date(data$end_date,format="%m/%d/%Y")
 ```
+multiply the weights by the time commitment
+```{r}
+data$edu_w <- data$edu * data$time_level
+data$arts_w <- data$arts * data$time_level
+data$tech_w <- data$tech * data$time_level
+```
+
 
 for each [month / quarter / year] between Sep 2015 - Mar 2024
 get all rows where this [month / quarter / year] falls in between start and end date (inclusive)
@@ -41,21 +48,21 @@ count_rows <- function(date) {
   # this only works for the month one
   temp <- data %>% filter(date >= data$start_date & date <= data$end_date) 
   # maybe i need all rows where either start or end date falls within curr and next date (for years). i could make 2 ranges that have an offset, and use both parameters
-  total <- sum(rowSums(temp %>% select(c('edu', 'tech', 'arts'))))
-  edu <- sum(temp$edu) / total
-  tech <- sum(temp$tech) / total
-  arts <- sum(temp$arts) / total
+  total <- sum(rowSums(temp %>% select(c('edu_w', 'tech_w', 'arts_w'))))
+  edu <- sum(temp$edu_w) / total
+  tech <- sum(temp$tech_w) / total
+  arts <- sum(temp$arts_w) / total
   return (c(edu, tech, arts))
 }
 ```
 
 creating set of dates
 ```{r}
-range_mo <- seq(as.Date("2015-09-01"), as.Date("2024-04-01"), "months") 
+range_mo <- seq(as.Date("2015-09-01"), as.Date("2024-06-01"), "months") 
 
-range_qu <- seq(as.Date("2015-09-01"), as.Date("2024-04-01"), "quarter") 
+range_qu <- seq(as.Date("2015-09-01"), as.Date("2024-06-01"), "quarter") 
 
-range_yr <- seq(as.Date("2015-01-01"), as.Date("2025-04-01"), "years") 
+range_yr <- seq(as.Date("2015-01-01"), as.Date("2025-06-01"), "years") 
 ```
 
 calculating percentages in each category with different time unit breakdowns, to see which makes most sense
@@ -84,10 +91,10 @@ print(data_long)
 
 ```{r}
 # custom palette
-palette <- c("#C3AFFC", "#CDE8B5", "#FFC864")
+palette <- c("#C3AFFC", "#CDE8B5", "#FCBF4E") #FFC864
 scales::show_col(palette)
 
-text_color <- "#808080"
+text_color <- "#454545"
 ```
 
 
@@ -115,7 +122,7 @@ stackedAreaQu
 ```
 
 ```{r}
-ggsave("stackedAreaQuarters.png")
+ggsave("stackedAreaQuartersWeightedExt.png")
 ```
 
 Future Ideas: 

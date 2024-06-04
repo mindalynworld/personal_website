@@ -1,5 +1,6 @@
 html {
     font-size: 62.5%;
+    scroll-behavior: smooth;
 
     --main-text-color: #454545;
     --main-border-color: #454545;
@@ -17,16 +18,63 @@ body {
 }
 
 .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: var(--header-background-color);
     text-align: center;
     color: var(--contrast-text-color);
-    /* margin-bottom: 10; */
+    height: 100%;
 }
 
 .tagline {
-    padding: 2.5rem;
+    padding: 2.5rem 2.5rem 1rem 2.5rem;
     margin: 0;
-    font-size: 1.4rem
+    font-size: 1.4rem;
+}
+
+.contact-info {
+    font-size: 1.3rem;
+}
+
+.introduction {
+    margin: 2rem 5rem;
+    padding-bottom: 1rem;
+    line-height: 2.5rem;
+    max-width: 78rem;
+}
+
+.introduction p {
+    font-size: 1.6rem;
+    padding-bottom: 1rem;
+}
+
+.intro-themes {
+    /* border: solid 0.3rem;
+    border-radius: 1rem; */
+    font-weight: 600;
+    text-decoration-line: underline;
+    text-decoration-thickness: 0.4rem;
+}
+
+.viz-description {
+    margin: 0 3rem;
+    text-align: center;
+}
+.viz-description p {
+    font-size: 1.3rem;
+}
+
+.start-btn {
+    padding: 1rem;
+    font-size: 1.6rem;
+    color: var(--contrast-text-color);
+    background: none;
+    border-radius: 1rem;
+    border-width: 0.1rem;
+    border: solid var(--contrast-text-color);
+    text-decoration: none;
 }
 
 .wrapper {
@@ -145,6 +193,10 @@ body {
 
 .item-description {
     margin: 2rem;
+}
+
+.item-description p {
+    font-size: 1.4rem;
 }
 
 .item-group {
