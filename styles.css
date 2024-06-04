@@ -58,12 +58,31 @@ body {
     text-decoration-thickness: 0.4rem;
 }
 
-.viz-description {
-    margin: 0 3rem;
-    text-align: center;
+.wrapper {
+    display: flex;
+    flex-direction: column;
 }
+
+.description-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.viz-description {
+    margin: 4rem 4rem 0;
+    text-align: center;
+    max-width: 78rem;
+}
+
 .viz-description p {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+}
+
+p.viz-title {
+    font-size: 1.8rem;
+    font-weight: 500;
+    text-align: center;
 }
 
 .start-btn {
@@ -77,12 +96,12 @@ body {
     text-decoration: none;
 }
 
-.wrapper {
+.viz-wrapper {
     display: flex;
     flex-direction: column;
     margin: 1rem 0;
     padding: 1rem;
-    height: 95vh; /* can't be 100 if the header is there. */
+    /* height: 95vh; can't be 100 if the header is there. */
 }
 
 .viz-container {
@@ -100,7 +119,7 @@ body {
     position: relative;
     flex-direction: column;
     /* height: 100%; this was causing weirdness for narrow wide view */ 
-    /* flex-basis: 70%; */
+    flex-basis: 70%;
     align-items: center;
     justify-content: center;
 
@@ -110,11 +129,6 @@ body {
     vertical-align: top;
     margin-right: 10px;
     overflow: visible; */
-}
-
-.viz-title {
-    font-size: 1.6rem;
-    font-weight: 500;
 }
 
 .svg-timeline {
@@ -129,13 +143,14 @@ body {
 
 
 .text-container {
+    /* background-color: pink; debugging*/ 
     display: flex;
     position: relative;
     flex-direction: column;
-    height: 100%;
+    min-height: 20rem;
     flex-basis: 30%;
     margin-left: 1rem;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
 }
 
@@ -154,7 +169,7 @@ body {
 }
 
 @media (min-width: 800px){
-    .wrapper {
+    .viz-wrapper {
         flex-direction: row;
     }
 
@@ -162,8 +177,15 @@ body {
         border-left: 0.1rem solid;
         border-top: none;
         border-color: var(--main-border-color);
+
     }
 }
+
+#text-block-2 {
+    font-size: 1.4rem;
+    padding: 2rem; 
+}
+
 /* .axis_container {
     display: inline-block;
     position: relative;
@@ -243,4 +265,16 @@ body {
 
 #description.legend-item {
     width: 60%;
+}
+
+.instructions {
+    padding: 2rem;
+    margin-top: 5rem;
+    font-size: 1.4rem;
+    color: grey;
+}
+
+.section-break {
+    width: 50%; 
+    height: 0.2rem;
 }
