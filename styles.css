@@ -75,7 +75,7 @@ body {
 .viz-description {
     margin: 4rem 4rem 0;
     text-align: center;
-    max-width: 78rem;
+    max-width: 75rem;
 }
 
 .viz-description p {
@@ -297,4 +297,8 @@ p.viz-title {
 
 .description-text {
     padding: 0 1rem;
+}
+
+#segway {
+    margin-bottom: 4rem;
 }
