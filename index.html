@@ -48,7 +48,7 @@
                 </p>
             </div>
 
-            <div>
+            <div class="start-btn-container">
                 <a href="#viz-description-1" class="start-btn"> Explore the data </a>
             </div>
 
@@ -60,10 +60,10 @@
                 <div class="viz-description" id="viz-description-1">
                     <p class="viz-title" id="viz-title">Experience Timeline</p>
                     <p>This first visual is an interactive chart that shows an overview of my experiences from September 2015 (when I began my undergraduate studies at Brown University), to the present. 
-                        Hover over or click on the items to reveal more information about each experience. 
+                        <i>Hover over or click on the items and more information will appear below (mobile) or to the right (desktop).</i>
                     </p>
                     <p>
-                        At a glance, the presence of each color seems relatively balanced, however I noticed more purple (arts) experiences in my earlier and more recent years of my career. The middle years tend to have more orange (tech) and green (education). To check if this observation was correct, I used a stacked area chart which can be seen in the <a href="#viz-description-2">next section</a>.
+                        At a glance, the presence of each color seems relatively balanced, however there are more purple (arts) experiences both in the earlier and more recent years of my career. The middle years tend to have more orange (tech) and green (education). To check if this observation was correct, I used a stacked area chart which can be seen in the <a href="#viz-description-2">next section</a>.
                     </p>
                     <p>  
                         Read more about the data and process <a href="#viz-description-3">here</a>.
@@ -115,7 +115,7 @@
                 <div class="text-container" id="text-container-1">
                     <div class="text-block" id="text-block-1">
                         <!-- <h3>Section Title</h3> -->
-                        <div class="instructions">Hover over or click on the items on the timeline to explore!</div>
+                        <div class="instructions"><i>Hover over or click on the items on the timeline to explore!</i></div>
                     </div>
                 </div>
             </div>
@@ -124,43 +124,46 @@
 
             <div class="description-wrapper">
                 <div class="viz-description" id="viz-description-2">
-                    <p class="viz-title" id="viz-title">Evolution of My Experience Over Time</p>
+                    <p class="viz-title" id="viz-title-2">Evolution of My Experience Over Time</p>
                     <p>How has the proportion of my involvement in each category changed over time?</p>
-                    <p>To create this chart, I partitioned the data into quarterly time periods (3 months). I summed up the weighted scores (some experiences were more heavily focused in one category than another, as well as higher/lower time commitment) for each category for all experiences that fell within that period, and divided each category score by the total. This gave me the percentage of time spent on each category each quarter.</p>
+                    <p>To create this chart, I grouped the data into quarters (3 month periods). I summed up the weighted scores (some experiences were more heavily focused in one category than another, or required higher/lower time commitment) for each category for all experiences that fell within that period, and divided each category score by the total. This gave me the percentage of time spent on each category each quarter.</p>
                 </div>
             </div>
 
             <div class="viz-wrapper" id="viz-2-wrapper">
-                <div class="viz" id="exp-stacked-area">
-                    <!-- <p class="viz-title">Evolution of My Experience Over Time</p> -->
-                    <img src="data/stackedAreaQuartersWeightedExt.png" width="90%"> 
-                    <div class="legend" id="stacked-area-chart">
-                        <div class="legend-item" id="description">
-                            <p class="legend-title">Description</p>
-                            <p class="legend-text description">This stacked area chart shows how the proportion of time I spent on the three categories: Arts, 
-                                Technology, and Education through my professional and extracurricular experiences
-                                evolved over time (September 2015 to May 2024). This graphic was made using the ggplot2 R library.</p>
-                        </div>
-                        <div class="legend-item" id="category">
-                            <p class="legend-title">Category</p>
-                            <svg class="svg-category" width="175" height="70" preserveAspectRatio="xMinYMin meet" viewbox="0 0 175 70">
-                                <!-- eventually make title svg so it can size dynamically -->
-                                <circle class="legend-symbol" cx="18" cy="8" r="7" fill="rgba(252, 191, 78, 0.75)"></circle>
-                                    <text class="legend-text" x="30" y="13">Technology & Data</text>
-                                <circle class="legend-symbol" cx="18" cy="28" r="7" fill="rgba(205, 232, 181, 0.75)"></circle>
-                                    <text class="legend-text" x="30" y="33">Education & Community Building</text>
-                                <circle class="legend-symbol" cx="18" cy="48" r="7" fill="rgba(195, 175, 252, 0.75)"></circle>
-                                    <text class="legend-text" x="30" y="53">Arts & Storytelling</text>
-                            </svg>
+                <div class="viz-container">
+                    <div class="viz" id="exp-stacked-area">
+                        <!-- <p class="viz-title">Evolution of My Experience Over Time</p> -->
+                        <img src="data/stackedAreaQuartersWeightedExt.png" width="90%"> 
+                        <div class="legend" id="stacked-area-chart">
+                            <div class="legend-item" id="description">
+                                <p class="legend-title">Description</p>
+                                <p class="legend-text description">This stacked area chart shows how the proportion of time I spent on the three categories: Arts, 
+                                    Technology, and Education through my professional and extracurricular experiences
+                                    evolved over time (September 2015 to May 2024). This graphic was made using the ggplot2 R library.</p>
+                            </div>
+                            <div class="legend-item" id="category">
+                                <p class="legend-title">Category</p>
+                                <svg class="svg-category" width="175" height="70" preserveAspectRatio="xMinYMin meet" viewbox="0 0 175 70">
+                                    <!-- eventually make title svg so it can size dynamically -->
+                                    <circle class="legend-symbol" cx="18" cy="8" r="7" fill="rgba(252, 191, 78, 0.75)"></circle>
+                                        <text class="legend-text" x="30" y="13">Technology & Data</text>
+                                    <circle class="legend-symbol" cx="18" cy="28" r="7" fill="rgba(205, 232, 181, 0.75)"></circle>
+                                        <text class="legend-text" x="30" y="33">Education & Community Building</text>
+                                    <circle class="legend-symbol" cx="18" cy="48" r="7" fill="rgba(195, 175, 252, 0.75)"></circle>
+                                        <text class="legend-text" x="30" y="53">Arts & Storytelling</text>
+                                </svg>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="text-container" id="text-container-2">
                     <div class="text-block" id="text-block-2">
-                        <p>From late 2015 to mid 2019, there seems to be a pretty even balance between the 3 categories. This aligns with my time at Brown, when I held leadership in a variety of education and arts organizations, while pursuing a degree in Computer Science.</p>
-                        <p>From mid 2019 to mid 2022, tech is alloted the most time, reaching a peak in 2022. Education still maintains a strong presence through this period, while arts involvement is mostly nonexistent. These are the few years following my graduation, when I worked full time as a software and data engineer. Simultaneously, I worked with multiple education organizations on side projects to develop curriculum and teach, but didn't have a lot of extra time to continue dancing.</p>
-                        <p>From 2023 onwards, arts involvement expands significantly over time while tech shrinks and education stays relatively consistent. This marks my current post-Master's program era where I've rediscovered my passion for dance while continuing work as a STEM educator. Now, I am seeking to once again find balance between these 3 themes in my life.</p>
+                        <p class="text-block-title">Observations</p>
+                        <p class="description-text">From late 2015 to mid 2019, there is a pretty even balance between the 3 categories. This aligns with my time at Brown, when I held leadership in a variety of education and arts organizations, while pursuing a degree in Computer Science.</p>
+                        <p class="description-text">From mid 2019 to mid 2022, tech is alloted the most time, reaching a peak in 2022. Education continues to maintain a strong presence through this period, while arts involvement is mostly nonexistent. These are the few years following my graduation, when I worked full time as a software/data engineer. Simultaneously, I worked on side projects with multiple education organizations to develop curriculum/teach, but didn't have a lot of extra time to continue dancing.</p>
+                        <p class="description-text">From 2023 onwards, arts involvement expands significantly over time while tech shrinks and education stays relatively consistent. This marks my current post-Master's program era where I've rediscovered my passion for dance while continuing work as a STEM educator. Now, I am seeking to once again find balance between these 3 themes in my life.</p>
                     </div>
                 </div>
             </div>
@@ -171,16 +174,16 @@
                 <div class="viz-description" id="viz-description-3">
                     <p class="viz-title" id="viz-title">About This Website</p>
 
-                    <p>This website is a <b>work in progress</b>. There are many features I'd like to add, technologies I'd like to integrate, and design iterations I'd like to try.</p>
+                    <p>This website is a <b>work in progress</b>. There are many features I'd like to add, design iterations I'd like to try, accesibility standards to meet, and technologies I'd like to integrate.</p>
 
 <p><b>Design</b></p>
-<p>I started by sketching ideas in a notebook, and using online design tools (Miro, Figma), to create prototypes before actually coding. Much of what I know about design comes from working closely with UI/UX designers in the tech industry, a UI/UX course I took at Brown, a Data Journalism course on Udacity that I enrolled in earlier this year. But mostly, my ideas come from reading and getting inspired by all of the data viz out on the web! One of my biggest data viz inspirations is Shirley Wu. </p>
+<p>I started by sketching ideas in a notebook, and using online design tools (Miro, Figma), to create prototypes before actually coding. Much of what I know about design comes from working closely with UI/UX designers in the tech industry, a UI/UX course I took at Brown, and a Data Journalism course on Udacity that I enrolled in earlier this year. But mostly, my ideas come from reading and getting inspired by all of the data viz out on the web! One of my biggest data viz inspirations is Shirley Wu. </p>
 
 <p><b>Development</b></p>
 <p>I built this website using d3.js. The site is responsive and can be viewed on both mobile and desktop. I am currently working on (1) migrating it to use Svelte, and (2) implementing scrollytelling to guide the narrative flow. </p>
 
 <p><b>Data</b></p>
-<p>The data can be found here [link to google sheets]. I used R to process the data and create certain plots, such as the stacked area chart. I started by converting my resume into a structured <a href="https://docs.google.com/spreadsheets/d/1Bpo8kMEhp0QY8Nh1I1b7FzerjE953_5d_1k1QWQ0zvY/edit?usp=sharing" target="_blank" rel="noopener noreferrer">data set</a>, labeling each experience with the themes it falls into (can be one or multiple) and the time commitment involved. The themes are weighted, so for example, my experience working as a software engineer at education first was 2 parts tech and 1 part education, because that job focused more on my technical skills than education.  </p>
+<p>I converted my resume into a structured <a href="https://docs.google.com/spreadsheets/d/1Bpo8kMEhp0QY8Nh1I1b7FzerjE953_5d_1k1QWQ0zvY/edit?usp=sharing" target="_blank" rel="noopener noreferrer">data set</a>, labeling each experience with the themes it falls into (can be one or multiple) and the time commitment involved. The themes are weighted, so for example, my experience working as a software engineer at education first was 2 parts tech and 1 part education, because that job focused more on my technical skills than education. I used R to process the data and create certain plots, such as the stacked area chart. </p>
 
 
                 </div>
@@ -354,6 +357,7 @@
                 //.attr('stroke-width', 1)
         
             d3.selectAll(".item-description").remove();
+            d3.selectAll(".instructions").style("visibility", "visible");
 
             keepSelection = false
             currTimelineSelection = null;
@@ -362,14 +366,14 @@
         function showTimelineItemDescription(element, data) {
             /* add text to description to text container */
             d3.select('#text-block-1').append("div")
-                .attr("class", "item-description")            
+                .attr("class", "item-description")   
                 .html(`
-                    <p style="font-weight: 500; font-size: 1.6rem">${data.title}</p>
-                    <p style="font-weight: 500; font-size: 1.3rem">
+                    <p style="font-weight: 500; font-size: 1.5rem">${data.title}</p>
+                    <p style="font-weight: 500;">
                         ${data.location} <br>
                         ${data.start_date} - ${data.end_date}
                     </p>
-                    <p style="margin:1rem; font-size: 1.4rem">${data.description}</p>
+                    <p>${data.description}</p>
                 `);
         }
 
@@ -402,7 +406,6 @@
         setInterval(recolor, 6000);
 
         d3.select(".header").selectAll("circle").on('mouseover', recolor);
-
 
         /* creating gradients for each combination of categories, used for rects and tool tips */
         var eduArtsGradient = createGradient("eduArtsGradient", edu_color, "0%", arts_color, "100%");
@@ -545,7 +548,7 @@
 
                 var item_groups = svgTimeline.selectAll('.item-group')
                     .on("mouseover", function(event, data) {
-                        d3.selectAll(".instructions").remove(); // change to set visibility hidden. .style("visibility", "hidden")
+                        d3.selectAll(".instructions").style("visibility", "hidden"); // change to set visibility hidden. .style("visibility", "hidden")
                         fadeAll();
                         highlightTimelineItem(this);
                         if (keepSelection) {
@@ -593,14 +596,6 @@
                     //.ticks(d3.timeMonth.every(6)) // num months
                     .tickSizeOuter(0)
                     .tickSizeInner(10);
-
-                //timelineContainer
-                    //.append("svg")
-                    // .attr("class", "axis_container")
-                    // .attr("preserveAspectRatio", "xMinYMin meet")
-                    // .attr("viewBox", `0 0 ${w} 50`)
-                    // .style("position", "fixed") // sticky isn't working
-                    // .style("bottom", 0)
                 
                 svgTimeline.append("g") // new group element which will contain all of our axis elements
                     .call(xAxisBottom)
