@@ -88,7 +88,7 @@ p.viz-title {
     text-align: center;
 }
 
-.start-btn-container {
+.btn-container {
     width: 100%;
     display: flex;
     align-items: center;
@@ -96,7 +96,7 @@ p.viz-title {
     margin-bottom: 2rem;
 }
 
-.start-btn {
+.btn {
     padding: 1rem;
     font-size: 1.6rem;
     color: var(--contrast-text-color);
@@ -105,6 +105,10 @@ p.viz-title {
     border-width: 0.1rem;
     border: solid var(--contrast-text-color);
     text-decoration: none;
+}
+#next-btn.btn {
+    color: var(--header-background-color);
+    border: solid var(--header-background-color);
 }
 
 .viz-wrapper {
