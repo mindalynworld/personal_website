@@ -27,29 +27,31 @@
                     </g>
                 </svg>
             </div>
-            <p class="contact-info">mindylynnng@gmail.com  //  +1 510 374 9871  //  <a style="color: white;" href="www.linkedin.com/in/mindylynnng">LinkedIn</a></p>
+            <p class="contact-info">mindylynnng@gmail.com  //  +1 510 374 9871  //  <a style="color: white;" href="https://www.linkedin.com/in/mindylynnng/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
             
             <div class="introduction">
                 <p>
-                    Hello! My name is Mindy and I am a data science and visualization engineer, a STEAM educator and curriculum developer, and a professional dancer based in the Bay Area, California. 
+                    Hello! My name is Mindy and I am a multidisciplinary being based in the Bay Area, California. 
                 </p>
     
                 <p>   
-                    Over the years I have had a wide variety of professional, academic, and volunteer experiences, and recently noticed that they have all fallen into 3 core themes: 
-                    (1) <u class="intro-themes" style="text-decoration-color: rgb(252, 191, 78);">Data and Technology</u>, 
-                    (2) <u class="intro-themes" style="text-decoration-color: rgb(205, 232, 181);">Education and Community Building</u> 
-                    and (3) <u class="intro-themes" style="text-decoration-color: rgb(195, 175, 252);">Arts and Storytelling</u>. 
-                    These themes have become pillars, anchoring and guiding me through my career path thus far.
+                    Over the years I've had a wide variety of experiences across seemingly disparate sectors: I've built web apps for tech companies, written and taught curriculum for nonprofits, conducted urban studies research in South Africa, and danced professionally in theater productions. 
                 </p>
                 <p>
-                    I was curious about how my involvement in each of these themes has fluctuated over time. 
-                    Have I maintained a balance or have certain ones taken up more of my time at different periods of my life? 
+                    At times, I felt like my experiences were scattered and disconnected, but recently I noticed something: all of my work falls within one or more of these 3 core themes: 
+                    (1) <u class="intro-themes" style="text-decoration-color: rgb(252, 191, 78);">Data and Technology</u>, 
+                    (2) <u class="intro-themes" style="text-decoration-color: rgb(205, 232, 181);">Education and Community Organizing</u> 
+                    and (3) <u class="intro-themes" style="text-decoration-color: rgb(195, 175, 252);">Arts and Storytelling</u>. 
+                </p>
+                <p>
+                    I was curious about how my involvement in each of these themes has looked like or fluctuated over time. 
+                    Have I maintained a balance or some taken precedence at different periods of my life? 
                     I decided to visualize it with data.
                 </p>
             </div>
 
             <div class="start-btn-container">
-                <a href="#viz-description-1" class="start-btn"> Explore the data </a>
+                <a href="#data-intro" class="start-btn"> Explore the data </a>
             </div>
 
             <!-- <p class="tagline">A data visualization engineer, STEAM educator, and professional dancer based in the Bay Area, California.</p> -->
@@ -57,14 +59,22 @@
 
         <div class="wrapper">
             <div class="description-wrapper">
+                <div class="viz-description" id="data-intro">
+                    <p class="viz-title" id="viz-title">The Data</p>
+                    <p>
+                        I started by entering all of my experiences into a <a href="https://docs.google.com/spreadsheets/d/1Bpo8kMEhp0QY8Nh1I1b7FzerjE953_5d_1k1QWQ0zvY/edit?usp=sharing" target="_blank" rel="noopener noreferrer">spreadsheet</a>, 
+                        tagging them with themes, their level of time commitment, and duration. I use this dataset to create the visualizations below. 
+                        <i><a href="#viz-description-3">Read more about the data and process</a></i>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="description-wrapper">
                 <div class="viz-description" id="viz-description-1">
                     <p class="viz-title" id="viz-title">Experience Timeline</p>
-                    <p>This first visual is an interactive chart that shows an overview of my experiences from September 2015 (when I began my undergraduate studies at Brown University), to the present. 
-                        I started by converting my resume into a structured <a href="https://docs.google.com/spreadsheets/d/1Bpo8kMEhp0QY8Nh1I1b7FzerjE953_5d_1k1QWQ0zvY/edit?usp=sharing" target="_blank" rel="noopener noreferrer">data set</a>, labeling each experience with the themes it falls into (can be one or multiple) and the time commitment level it involved. 
-                        <i>Read more about the data and process <a href="#viz-description-3">here</a></i>.
+                    <p>This first visual is an interactive chart that shows an overview of my experiences from September 2015 (when I began my undergraduate studies at Brown University), to the end of 2024. 
+                        <i>Hover over or click on the items and more information will appear below (mobile) or to the right (desktop).</i>
                     </p>
-
-                    <p><i>Hover over or click on the items and more information will appear below (mobile) or to the right (desktop).</i></p>
                 </div>
             </div>
 
@@ -116,13 +126,12 @@
                     </div>
                 </div>
             </div>
-
-            <hr class="section-break">
             
             <div class="description-wrapper">
                 <div class="viz-description" id="segway">
                     <p>
-                        At a glance, the presence of each color in the timeline above seems relatively balanced, however there are more purple (arts) experiences both in the earlier and more recent years of my career. The middle years tend to have more orange (tech) and green (education). To check if this observation was correct, I used a stacked area chart which can be seen in the <a href="#viz-description-2">next section</a>.
+                        At a glance, the presence of each color in the timeline above seems relatively balanced, however there are more purple (arts) experiences in both the earlier and more recent years of my career. The middle years show more orange (tech) and green (education). To check if this observation was correct, I explore the
+                        <a href="#viz-description-2">evolution of my experience over time</a>.
                     </p>
                 </div>
             </div>
@@ -134,7 +143,6 @@
                 <div class="viz-description" id="viz-description-2">
                     <p class="viz-title" id="viz-title-2">Evolution of My Experience Over Time</p>
                     <p>How has the proportion of my involvement in each category changed over time?</p>
-                    <p>To create this chart, I grouped the data into quarters (3 month periods). I summed up the weighted scores (some experiences were more heavily focused in one category than another, or required higher/lower time commitment) for each category for all experiences that fell within that period, and divided each category score by the total. This gave me the percentage of time spent on each category each quarter.</p>
                 </div>
             </div>
 
@@ -142,13 +150,11 @@
                 <div class="viz-container">
                     <div class="viz" id="exp-stacked-area">
                         <!-- <p class="viz-title">Evolution of My Experience Over Time</p> -->
-                        <img src="data/stackedAreaQuartersWeightedExt.png" width="90%"> 
+                        <img src="data/stackedAreaQuartersWeightedToEOY2024.png" width="90%"> 
                         <div class="legend" id="stacked-area-chart">
                             <div class="legend-item" id="description">
                                 <p class="legend-title">Description</p>
-                                <p class="legend-text description">This stacked area chart shows how the proportion of time I spent on the three categories: Arts, 
-                                    Technology, and Education through my professional and extracurricular experiences
-                                    evolved over time (September 2015 to May 2024). This graphic was made using the ggplot2 R library.</p>
+                                <p class="legend-text description">To create this chart, I partitioned the data into 3 month periods. Each experience was given a weighted score for each category (some experiences were more focused in one category, or had higher time commitment). I summed the scores for each category for experiences that fell within that quarter and divided by the total to get the % of time spent on each category. Made with the ggplot2.</p>
                             </div>
                             <div class="legend-item" id="category">
                                 <p class="legend-title">Category</p>
@@ -169,10 +175,26 @@
                 <div class="text-container" id="text-container-2">
                     <div class="text-block" id="text-block-2">
                         <p class="text-block-title">Observations</p>
-                        <p class="description-text">From late 2015 to mid 2019, there is a pretty even balance between the 3 categories. This aligns with my time at Brown, when I held leadership in a variety of education and arts organizations, while pursuing a degree in Computer Science.</p>
-                        <p class="description-text">From mid 2019 to mid 2022, tech is alloted the most time, reaching a peak in 2022. Education continues to maintain a strong presence through this period, while arts involvement is mostly nonexistent. These are the few years following my graduation, when I worked full time as a software/data engineer. Simultaneously, I worked on side projects with multiple education organizations to develop curriculum/teach, but didn't have a lot of extra time to continue dancing.</p>
-                        <p class="description-text">From 2023 onwards, arts involvement expands significantly over time while tech shrinks and education stays relatively consistent. This marks my current post-Master's program era where I've rediscovered my passion for dance while continuing work as a STEM educator. Now, I am seeking to once again find balance between these 3 themes in my life.</p>
+
+                        <p class="description-text">
+                            <b>Undergraduate period (late 2015 - mid 2019):</b> There is an even balance between the categories. This aligns with my time at Brown, when I was pursuing a degree in Computer science while holding leadership positions in a number of education and arts organizations. 
+                        </p>
+                        <p class="description-text">
+                            <b>Post-Undergraduate period (mid 2019 - mid 2022):</b> Tech is the focus, peaking in 2022. Education maintains a strong presence through this period. These are the few years following my graduation, when I worked full time as a software and data engineer and worked on side projects with education organizations to develop curriculum/teach. Arts involvement is mostly nonexistent as I didn't have a lot of extra time to continue dancing.
+                        </p>
+                        <p class="description-text">
+                            <b>Post-Masters period (2023 - present):</b> Arts involvement begins to expand significantly while tech shrinks and education persists. This marks my current post-Master's program era where I've been dancing at a professional level, while continuing work as a part-time data researcher and STEM educator.
+                        </p>    
+
                     </div>
+                </div>
+            </div>
+
+            <div class="description-wrapper">
+                <div class="viz-description" id="segway">
+                    <p>
+                        Throughout my life, technology, education, and the arts have served as distinct yet interconnected avenues for driving social impact. Each has shaped my perspective, and I am determined to continue drawing on all three. Many of my experiences lie at the intersection of two of these themes, but rarely do they integrate all three. Data visualization, however, represents the perfect fusion, allowing me to combine my technical expertise with visual design to craft compelling narratives that inform, educate, and inspire.
+                    </p>
                 </div>
             </div>
 
@@ -219,16 +241,16 @@
         /* GLOBAL ATTRIBUTES */
         var padding = 70;
         var rect_padding = 15;
-        var month_length = 10;
-        var item_length = 15;
-        var num_items = 22;
-        var num_months = 112; //104 is original. adding more for scaling to allow for title overflow (up to dec 2024)
+        var month_length = 10; // width one unit
+        var item_length = 15; // height one unit
+        var num_items = 22; // determines height
+        // should count months between start date and today's date + 1
+        var num_months = 112 + 1; // up to dec 2024. this needs to be updated as time progresses
         var w = (num_months * month_length) + padding * 2; // + 200 is to allow for title overflow
         var h = (num_items * (item_length * 2 + rect_padding)) + padding*2;
 
         /* DEFINING TIMELINE SVG CANVAS */
-        var wrapper = d3.select("#viz-1-wrapper") // this doesn't even need to be d3
-            //.attr("style", `background-image: ${gradient_normal}`);
+        var wrapper = d3.select("#viz-1-wrapper") // this doesn't need to be d3
 
         var timelineContainer = d3.select("div#exp-timeline"); // container allows svg to be dynamically sized when window is adjusted
             
@@ -236,8 +258,6 @@
             .attr("preserveAspectRatio", "xMinYMin meet")
             .attr("viewBox", `0 0 ${w} ${h}`)
             .classed("svg-timeline", true)
-            //.attr("style", "background-color: #454545")
-            // .attr("style", `background-image: ${gradient_normal}`);   
                 
         var defs = svgTimeline.append("defs");
 
@@ -273,9 +293,6 @@
                 .transition()
                 .duration(1000)
                 .attr("fill", () => colors_faded[generateRandomIndex(2, used)])
-                // .on("end", ()=>
-                //     setTimeout(recolor, 4000)
-                // );
 
                 d3.selectAll("#education")
                 .transition()
@@ -401,10 +418,6 @@
             // var rect_id = d3.select(rect).attr("id");
             // d3.selectAll("#" + rect_id)
             //     .attr('stroke-width', 2);
-
-            // wrapper.attr("style", `background-image: ${gradient_faded}`);
-
-
         }
 
         /* CALL FUNCTIONS */
@@ -425,13 +438,17 @@
         d3.csv("data/personalExperienceData.csv").then( function(data) {
             console.log(data);
             data = data.filter((item) => (item.include == 1));
-            data.sort((a,b) => a.start_mo - b.start_mo)
+            data.sort((a,b) => a.start_mo - b.start_mo) // sort by start date
+            // data.sort((a,b) => a.end_mo - b.end_mo) // sort by end date
 
             // var usedIndices = new Set();
             var currY = padding;
             var currY2 = padding;
             var currY3 = padding; // this works but it's JANK
             var currY4 = padding; 
+
+            // what if i created the whole group relative to itself and then set the x/y of the whole group?
+            // have to use transform for <g> 
 
             var itemGroup = svgTimeline.selectAll('g')
                 .data(data)
@@ -475,8 +492,9 @@
                 })
 
             
-            // the update happens async so it fucks it up.
+            // the update happens async so it messes it up.
 
+            // deciding which side to put the title on
             itemGroup.append("line")
                 .attr('x1', function(d) {
                     if (d.start_mo < num_months / 2) {
@@ -527,25 +545,6 @@
                 .attr('font-size', "2rem")
                 .attr('fill', main_color)
                 .text((d) => d.title);
-
-            // what if i created the whole group relative to itself and then set the x/y of the whole group???
-                // have to use transform for <g> 
-
-                // var currY = padding;
-                // svgTimeline.selectAll('line')
-                // .data(data)
-                // .enter()
-                // .append('line')
-                //     .attr('x1', (d) => (d.start_mo * month_length + padding) + (d.num_months * month_length))
-                //     .attr('y1', function(d) {
-                //         var temp = currY;
-                //         currY = currY + (item_length*d.time_level) + rect_padding;
-                //         return temp + (d.time_level * item_length) /2;
-                //     })
-                //     .attr('x2', (d) => (d.start_mo * month_length + padding) + (d.num_months * month_length) + 20)
-                //     .attr('y2', (d) => )
-                //     .attr('stroke', main_color);
-
  
                 // /* HANDLING MOUSE EVENTS */
 
@@ -591,17 +590,18 @@
                         event.stopPropagation();
                     })
 
+                console.log(new Date());
                 const x = d3.scaleTime(
-                    [new Date(2015, 9, 1), new Date(2024, 12, 31)], // domain
+                    [new Date(2015, 9, 1), new Date(2024, 12, 31)], // domain. this needs to be updated to current new Date(2024, 12, 31)
                     [padding, w - padding]); // range
 
                 var xAxisTop = d3.axisTop(x)
-                    //.ticks(d3.timeMonth.every(6)) // num months
+                    // .ticks(d3.timeMonth.every(6)) // if want to break down further
                     .tickSizeOuter(0)
                     .tickSizeInner(10);
                 
                 var xAxisBottom = d3.axisBottom(x)
-                    //.ticks(d3.timeMonth.every(6)) // num months
+                    //.ticks(d3.timeMonth.every(6))
                     .tickSizeOuter(0)
                     .tickSizeInner(10);
                 

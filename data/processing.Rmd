@@ -58,11 +58,11 @@ count_rows <- function(date) {
 
 creating set of dates
 ```{r}
-range_mo <- seq(as.Date("2015-09-01"), as.Date("2024-06-01"), "months") 
+range_mo <- seq(as.Date("2015-09-01"), as.Date("2024-12-01"), "months") 
 
-range_qu <- seq(as.Date("2015-09-01"), as.Date("2024-06-01"), "quarter") 
+range_qu <- seq(as.Date("2015-09-01"), as.Date("2024-12-01"), "quarter") 
 
-range_yr <- seq(as.Date("2015-01-01"), as.Date("2025-06-01"), "years") 
+range_yr <- seq(as.Date("2015-01-01"), as.Date("2024-12-01"), "years") 
 ```
 
 calculating percentages in each category with different time unit breakdowns, to see which makes most sense
@@ -122,7 +122,7 @@ stackedAreaQu
 ```
 
 ```{r}
-ggsave("stackedAreaQuartersWeightedExt.png")
+ggsave("stackedAreaQuartersWeightedToEOY2024.png")
 ```
 
 Future Ideas: 
