@@ -100,12 +100,18 @@ p.viz-title {
     padding: 1rem;
     font-size: 1.6rem;
     color: var(--contrast-text-color);
-    background: none;
+    background: linear-gradient(to right bottom, rgb(252, 191, 78),rgb(195, 175, 252), rgb(205, 232, 181));
     border-radius: 1rem;
     border-width: 0.1rem;
-    border: solid var(--contrast-text-color);
+    /* border: solid var(--contrast-text-color); */
     text-decoration: none;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.24);
 }
+
+.btn:hover {
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.24);
+  }
+
 #next-btn.btn {
     color: var(--header-background-color);
     border: solid var(--header-background-color);
