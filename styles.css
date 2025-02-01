@@ -29,6 +29,12 @@ body {
     overflow: scroll;
 }
 
+
+.scroll-arrow-container {
+    position: absolute;
+    bottom: 50px;
+}
+
 .tagline {
     padding: 2.5rem 2.5rem 1rem 2.5rem;
     margin: 0;
@@ -36,28 +42,53 @@ body {
 }
 
 .contact-info {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     margin: 1rem;
 }
 
 .introduction {
+    background-color: lightskyblue;
+
     margin: 0 4rem;
     padding-bottom: 1rem;
     line-height: 2.5rem;
     max-width: 78rem;
+
+    height: 40rem;
+
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
 }
 
-.introduction p {
-    font-size: 1.6rem;
+.introduction::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+.intro-section {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 1.8rem;
     padding-bottom: 1rem;
+    align-items: center;
+    scroll-snap-stop: always;  
+    scroll-snap-align: start;
+
+
 }
 
 .intro-themes {
-    /* border: solid 0.3rem;
-    border-radius: 1rem; */
+    border: solid 0.3rem;
+    border-radius: 1rem; 
+    margin: 0.5rem;
     font-weight: 600;
-    text-decoration-line: underline;
-    text-decoration-thickness: 0.4rem;
+    width: 35rem;
+    text-decoration: none;
+    /* text-decoration-line: underline;
+    text-decoration-thickness: 0.4rem; */
 }
 
 .wrapper {
