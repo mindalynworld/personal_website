@@ -15,24 +15,31 @@ body {
     overflow: visible;
     background: var(--main-background-color);
     color: var(--main-text-color);
+    margin: 0;
 }
 
-.header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.header { /* now header and intro are the same level (so that scroll works on logo container */
+    position: relative;
     background-color: var(--header-background-color);
     text-align: center;
     color: var(--contrast-text-color);
     min-height: 100%;
-    overflow: scroll;
+    /* overflow: scroll; */
 }
 
+.logo-container {
+    width: 100%;
+    background-color: var(--header-background-color);
+    position: sticky; /* sticky absolute*/
+    top: 0;
+    z-index: 100;
+    padding: 20 0;
+}
 
-.scroll-arrow-container {
+/* either add it to each section OR create a footer. i like footer idea better */
+.scroll-arrow-container { 
     position: absolute;
-    bottom: 50px;
+    /*bottom: 50px; */
 }
 
 .tagline {
@@ -43,18 +50,18 @@ body {
 
 .contact-info {
     font-size: 1.5rem;
-    margin: 1rem;
+    font-style: oblique;
 }
 
 .introduction {
-    background-color: lightskyblue;
-
-    margin: 0 4rem;
-    padding-bottom: 1rem;
-    line-height: 2.5rem;
-    max-width: 78rem;
-
-    height: 40rem;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
@@ -68,16 +75,33 @@ body {
 }
 
 .intro-section {
+    background-color: transparent;
+
     display: flex;
-    justify-content: center;
+    justify-content: center; /*   space-around */
     flex-direction: column;
-    font-size: 1.8rem;
-    padding-bottom: 1rem;
     align-items: center;
+    width: 100%;
+    min-height: 100%;
+
+    max-width: 78rem;
+    /* height: 40rem; */
+
+    margin: 0 4rem;
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+
     scroll-snap-stop: always;  
     scroll-snap-align: start;
+}
 
+.intro-section::before {
+    content: " ";
+    height: 25rem;
+}
 
+.text {
+    padding: 0 3rem;
 }
 
 .intro-themes {
@@ -89,6 +113,16 @@ body {
     text-decoration: none;
     /* text-decoration-line: underline;
     text-decoration-thickness: 0.4rem; */
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .wrapper {
@@ -120,7 +154,7 @@ p.viz-title {
 }
 
 .btn-container {
-    width: 100%;
+    /* width: 100%; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -128,7 +162,7 @@ p.viz-title {
 }
 
 .btn {
-    padding: 1rem;
+    padding: 1rem 1.5rem;
     font-size: 1.6rem;
     color: var(--contrast-text-color);
     background: linear-gradient(to right bottom, rgb(252, 191, 78),rgb(195, 175, 252), rgb(205, 232, 181));
@@ -280,7 +314,7 @@ p.viz-title {
     max-width: -webkit-fill-available;
     justify-content: space-evenly;
     width: 90%;
-    /* margin-bottom: 10px; */
+    margin-bottom: 1.5rem;
     color: var(--main-text-color);;
 }
 

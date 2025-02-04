@@ -6,67 +6,85 @@
     </head>
     <body>
         <div class="header">
-            <div class="logo">
-            <svg width="300" height="200">
-                    <g>
-                        <circle class="logo-circle" id="technology"
-                        cx="110" cy="130" r="60"
-                        fill="rgba(252, 191, 78, 0.75)"
-                        />
-                        <circle class="logo-circle" id="education"
-                        cx="190" cy="130" r="60"
-                        fill="rgba(205, 232, 181, 0.75)"
-                        />
-                        <circle class="logo-circle" id="arts"
-                        cx="150" cy="80" r="60"
-                        fill="rgba(195, 175, 252, 0.75)" 
-                        />
-                        <text x="75" y="120" 
-                        font-size="35" font-weight="500"
-                        fill="white">Mindy Ng</text>
-                    </g>
-                </svg>
-            </div>
-            <p class="contact-info">mindylynnng@gmail.com  //  +1 510 374 9871  //  <a style="color: white;" href="https://www.linkedin.com/in/mindylynnng/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
-            
-            <div class="introduction">
-                <div class="intro-section" id="step-1" style="height: 400px">
-                    <p>Hello! My name is Mindy, and this is a visual exploration of my career through data. </p>
-                    <div class="scroll-arrow-container">
-                        <p style="margin: 0;"><i>scroll</i></p>
-                        <svg class="scroll-arrow" fill="#ffffff" height="20px" width="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 49.656 49.656" xml:space="preserve" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M45.414,10.292L24.828,30.878L4.242,10.293L0,14.536l24.828,24.828l24.828-24.829L45.414,10.292z M2.828,14.536l1.414-1.414 l20.586,20.585l20.586-20.586l1.414,1.414l-22,22.001L2.828,14.536z"></path> </g></svg>
+             <div class="introduction"> <!-- maybe can remove this level -->
+                <div class="logo-container">
+                    <div class="logo">
+                        <svg width="300" height="200">
+                            <g>
+                                <circle class="logo-circle" id="technology"
+                                cx="110" cy="130" r="60"
+                                fill="rgba(252, 191, 78, 0.75)"
+                                />
+                                <circle class="logo-circle" id="education"
+                                cx="190" cy="130" r="60"
+                                fill="rgba(205, 232, 181, 0.75)"
+                                />
+                                <circle class="logo-circle" id="arts"
+                                cx="150" cy="80" r="60"
+                                fill="rgba(195, 175, 252, 0.75)" 
+                                />
+                                <text x="75" y="120" 
+                                font-size="35" font-weight="500"
+                                fill="white">Mindy Ng</text>
+                            </g>
+                        </svg>
+                    </div>
+                    <p class="contact-info">mindylynnng@gmail.com  //  +1 510 374 9871  //  <a style="color: white;" href="https://www.linkedin.com/in/mindylynnng/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+                </div>
+
+                <div class="intro-section" id="step-1">
+                    <div class="text-area">
+                        <p class="text">Hello! My name is Mindy, and this is a visual exploration of my career through data. </p>
                     </div>
                 </div>
     
-                <div class="intro-section" id="step-2" style="height: 400px">   
-                    Over the years, I've had a wide variety of experiences across seemingly disparate sectors: I've built web apps for tech companies, written and taught curriculum for nonprofits, conducted urban studies research in South Africa, pursued a master's in spatial data science, and danced professionally in theater productions. 
+                <div class="intro-section" id="step-2">   
+                    <div class="text-area">
+                        <p class="text">Over the years, I've had a wide variety of experiences across seemingly disparate sectors: I've built web apps for tech companies, written and taught curriculum for nonprofits, conducted urban studies research in South Africa, pursued a master's in spatial data science, and danced professionally in theater productions. </p>
+                    </div>
                 </div>
 
-                <div class="intro-section" id="step-3" style="height: 400px">
-                    At times, I felt like my experiences were scattered and disconnected, but then I noticed a pattern: all of my work fell within one or more of these 3 core themes: 
-                    <ol style="align-items: center;">
-                        <li class="intro-themes" style="border-color: rgb(252, 191, 78); background-color: rgb(252, 191, 78, 0.7);">Data and Technology</li>
-                        <li class="intro-themes" style="border-color: rgb(205, 232, 181); background-color: rgb(205, 232, 181, 0.7); ">Education and Community Organizing</li> 
-                        <li class="intro-themes" style="border-color: rgb(195, 175, 252); background-color: rgb(195, 175, 252, 0.7);">Arts and Storytelling</li>
-                    </ol>
+                <div class="intro-section" id="step-3">
+                    <div class="text-area">
+                        <p class="text">At times, I felt like my experiences were scattered and disconnected, but then I noticed a pattern: all of my work fell within one or more of these 3 core themes: </p>
+                        <ol style="display: inline-block; align-items: center;">
+                            <li class="intro-themes" style="border-color: rgb(252, 191, 78); background-color: rgb(252, 191, 78, 0.7);">Data and Technology</li>
+                            <li class="intro-themes" style="border-color: rgb(205, 232, 181); background-color: rgb(205, 232, 181, 0.7); ">Education and Community Organizing</li> 
+                            <li class="intro-themes" style="border-color: rgb(195, 175, 252); background-color: rgb(195, 175, 252, 0.7);">Arts and Storytelling</li>
+                        </ol>
+                    </div>
                 </div>
 
-                <div class="intro-section" id="step-4" style="height: 400px">
-                    I was curious about how my involvement in each of these themes has looked like or fluctuated over time. 
-                    Have I maintained a balance or some taken precedence at different periods of my life? 
-                    I decided to visualize it with data.                     
+                <div class="intro-section" id="step-4">
+                    <div class="text-area">
+                        <p class="text">
+                            I was curious about how my involvement in each of these themes has fluctuated over time. 
+                            <b>Have I maintained a balance between all three or have some taken precedence at different periods of my life?</b>
+                            I decided to visualize it with data.       
+                        </p> 
+                    </div>             
                 </div>
 
-                <div class="intro-section" id="step-5" style="height: 400px">
-                    I started by entering all of my experiences into a spreadsheet, 
-                    tagging them with themes, their level of time commitment, and duration. Then I used it to create the visualizations below. 
+                <div class="intro-section" id="step-5">
+                    <div class="text-area">
+                        <p class="text">
+                        I started by entering all of my experiences into a spreadsheet, 
+                        tagging them with themes, their level of time commitment, and duration. Then I used it to create the visualizations below. 
+                        </p>
+                    </div>
                 </div>
 
-                <div class="intro-section btn-container" id="step-6" style="height: 400px">
-                    <a href="#viz-description-1" class="btn" id="start-btn"> <b>Explore the data!</b> </a>
+                <div class="intro-section btn-container" id="step-6">
+                <a href="#viz-description-1" class="btn" id="start-btn"> <b>Explore the data!</b> </a>
                 </div>
             </div>
             
+            <div class="footer">
+                <div class="scroll-arrow-container">
+                    <p style="margin: 0;"><i>scroll</i></p>
+                    <svg class="scroll-arrow" fill="#ffffff" height="20px" width="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 49.656 49.656" xml:space="preserve" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M45.414,10.292L24.828,30.878L4.242,10.293L0,14.536l24.828,24.828l24.828-24.829L45.414,10.292z M2.828,14.536l1.414-1.414 l20.586,20.585l20.586-20.586l1.414,1.414l-22,22.001L2.828,14.536z"></path> </g></svg>
+                </div>
+            </div>
 
 
 
@@ -264,7 +282,7 @@
         var rect_padding = 15;
         var month_length = 10; // width one unit
         var item_length = 15; // height one unit
-        var num_items = 22; // determines height
+        var num_items = 21; // determines height
         // should count months between start date and today's date + 1
         var num_months = 112 + 1; // up to dec 2024. this needs to be updated as time progresses
         var w = (num_months * month_length) + padding * 2; // + 200 is to allow for title overflow
@@ -275,7 +293,8 @@
 
         var timelineContainer = d3.select("div#exp-timeline"); // container allows svg to be dynamically sized when window is adjusted
             
-        var svgTimeline = timelineContainer.insert("svg", ".legend") // inserts timeline before the legend
+        //var svgTimeline = timelineContainer.insert("svg", ".legend") // inserts timeline before the legend
+        var svgTimeline = timelineContainer.append("svg") // adds timeline after legend
             .attr("preserveAspectRatio", "xMinYMin meet")
             .attr("viewBox", `0 0 ${w} ${h}`)
             .classed("svg-timeline", true)
