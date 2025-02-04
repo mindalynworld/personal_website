@@ -249,7 +249,7 @@ p.viz-title {
     max-width: -webkit-fill-available;
     justify-content: space-evenly;
     width: 90%;
-    /* margin-bottom: 10px; */
+    margin-bottom: 1.5rem;
     color: var(--main-text-color);;
 }
 

@@ -35,7 +35,7 @@
                 </p>
     
                 <p>   
-                    Over the years, I've had a wide variety of experiences across seemingly disparate sectors: I've built web apps for tech companies, written and taught curriculum for nonprofits, conducted urban studies research in South Africa, pursued a master's in spatial data science, and danced professionally in theater productions. 
+                    Over the years, I've worked across a variety of roles and industries -- building web apps for tech companies, writing science & arts curriculum, conducting data-driven urban  studies research, and performing as a professional dancer.
                 </p>
                 <p>
                     At times, I felt like my experiences were scattered and disconnected, but then I noticed a pattern: all of my work fell within one or more of these 3 core themes: 
@@ -45,12 +45,12 @@
                 </p>
                 <p>
                     I was curious about how my involvement in each of these themes has looked like or fluctuated over time. 
-                    Have I maintained a balance or some taken precedence at different periods of my life? 
+                    <b>Have I maintained a balance or some taken precedence at different periods of my life?</b>
                     I decided to visualize it with data.                     
                 </p>
                 <p>
                     I started by entering all of my experiences into a spreadsheet, 
-                    tagging them with themes, their level of time commitment, and duration. Then I used it to create the visualizations below. 
+                    tagging them with themes, their level of time commitment, and duration. Then, I used it to create the visualizations below. 
                 </p>
             </div>
 
@@ -200,7 +200,9 @@
             <div class="description-wrapper">
                 <div class="viz-description" id="segway">
                     <p>
-                        Throughout my life, technology, education, and the arts have served as distinct yet interconnected avenues for driving social impact. Each has shaped my perspective, and I am determined to continue drawing on all three. Many of my experiences lie at the intersection of two of these themes, but rarely do they integrate all three. Data visualization, however, represents the perfect fusion, allowing me to combine my technical expertise with visual design to craft compelling narratives that inform, educate, and inspire.
+                        Throughout my life, technology, education, and the arts have served as distinct yet interconnected avenues to make social impact. My involvement in each has shaped my perspective, giving me a unique approach to all of the work that I do. 
+                        My goal is to find work that allows me to connect all three interests. Many of my experiences lie at the intersection of two of these themes, but rarely do they integrate all three. But then I found <b>data visualization</b>: 
+                        the perfect fusion, where I can combine my technical expertise and visual arts background to tell stories that educate and inspire.
                     </p>
                 </div>
             </div>
@@ -261,7 +263,8 @@
 
         var timelineContainer = d3.select("div#exp-timeline"); // container allows svg to be dynamically sized when window is adjusted
             
-        var svgTimeline = timelineContainer.insert("svg", ".legend") // inserts timeline before the legend
+        //var svgTimeline = timelineContainer.insert("svg", ".legend") // inserts timeline before the legend
+        var svgTimeline = timelineContainer.append("svg") // adds timeline after legend
             .attr("preserveAspectRatio", "xMinYMin meet")
             .attr("viewBox", `0 0 ${w} ${h}`)
             .classed("svg-timeline", true)
